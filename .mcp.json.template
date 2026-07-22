@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy to .mcp.json (git-ignored) and fill in. Only needed if you use the Apple Health source. The Health Auto Export app (paid, ~US$4/yr) runs an MCP server on your phone; __HEALTH_MCP_IP__ is your phone's LAN IP and __HEALTH_MCP_TOKEN__ is the token it shows. Notion, Strava and Google Calendar are claude.ai connectors — you authorize those in Claude, not here.",
+  "mcpServers": {
+    "health-auto-export": {
+      "type": "http",
+      "url": "http://__HEALTH_MCP_IP__:9000/mcp",
+      "headers": {
+        "Authorization": "Bearer __HEALTH_MCP_TOKEN__"
+      }
+    }
+  }
+}
