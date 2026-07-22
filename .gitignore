@@ -1,0 +1,41 @@
+# ── SECRETS (never commit) ────────────────────────────────────────────
+# All user config/secrets live in ~/.hestia/ (outside this repo) — but guard anyway:
+.hestia/
+*.env
+!*.env.example
+.mcp.json
+!.mcp.json.template
+*token*
+*secret*
+*.pem
+*.key
+
+# ── PERSONAL DATA (this is a PUBLIC repo — no real user data ever) ─────
+# The vault-template ships only fictional seed content. Real data is ignored:
+vault-template/Raw/health/*.json
+vault-template/Raw/life-signals/*.json
+vault-template/Projects/Finanzas/Resumenes/*
+!vault-template/Projects/Finanzas/Resumenes/.gitkeep
+!vault-template/Projects/Finanzas/Resumenes/README.md
+# Never commit real bank statements / exports
+*.xls
+*.xlsx
+*.pdf
+*.csv
+
+# ── OBSIDIAN ──────────────────────────────────────────────────────────
+vault-template/.obsidian/workspace*.json
+vault-template/.obsidian/cache
+
+# ── PYTHON ────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ── OS / EDITOR ───────────────────────────────────────────────────────
+.DS_Store
+*.swp
+.idea/
+.vscode/
