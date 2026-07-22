@@ -5,7 +5,7 @@ Este vault es la base de conocimiento personal de la usuaria. Si sos Claude (u o
 ## Configuración y placeholders (IMPORTANTE)
 
 Los skills y las scheduled-tasks usan placeholders que **resolvés desde `Projects/Sistema/config.md`**, no los edites en los prompts:
-- `{{TAREAS_COLLECTION_ID}}`, `{{REFLECTIONS_COLLECTION_ID}}`, `{{DAILY_HABIT_TABLE_ID}}`, `{{PROYECTOS_COLLECTION_ID}}` → los `collection://` de las bases de Notion.
+- `{{TAREAS_COLLECTION_ID}}`, `{{REFLECTIONS_COLLECTION_ID}}`, `{{HABITS_DB_ID}}`, `{{PROYECTOS_COLLECTION_ID}}` → los `collection://` de las bases de Notion.
 - `${VAULT_ROOT}` → la raíz del vault (también en `~/.hestia/vault-root.env`).
 - El **mapeo señal→fuente** (mood/ciclo/sueño/meds/entrenos → apple-health / manual-notion / strava / gcal) y demás preferencias también salen de `config.md`.
 

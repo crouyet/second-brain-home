@@ -47,7 +47,7 @@ headless (Claude + los ticks + el bot) sobre esos archivos.
    bases **Tareas**, **Reflections**, la **tabla Daily habit-tracker** y **Proyectos**; sacá
    el `collection://<uuid>` de cada una.
 4. Escribí los IDs en `config.md` (sección Notion) y en `~/.hestia/notion.env`
-   (`TAREAS_COLLECTION_ID`, `REFLECTIONS_COLLECTION_ID`, `DAILY_HABIT_TABLE_ID`,
+   (`TAREAS_COLLECTION_ID`, `REFLECTIONS_COLLECTION_ID`, `HABITS_DB_ID`,
    `PROYECTOS_COLLECTION_ID`).
 
 ### 3. Telegram (obligatorio)

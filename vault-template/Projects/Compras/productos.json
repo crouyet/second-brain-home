@@ -6,7 +6,7 @@
     {"nombre": "verduras", "frecuencia_dias": 7, "stock_actual": "ok", "canal": "feria", "ultimo_precio": 0}
   ],
   "canales": {
-    "feria": {"dia_descuento": "martes", "descuento": "ejemplo 30%", "medio_pago": "<tu tarjeta>"},
+    "feria": {"dia_descuento": "sabado", "descuento": "30%", "medio_pago": "BUEPP"},
     "supermercado": {"dia_descuento": "miercoles", "descuento": "ejemplo 20%", "medio_pago": "<tu tarjeta>"}
   }
 }
