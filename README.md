@@ -1,5 +1,7 @@
 # 🏡 second-brain-home
 
+**English** · [Español](README.es.md)
+
 **An agentic life-operating-system on top of Obsidian + Notion + Claude Code.**
 Your phone wakes you with the day already decided; your evening closes itself; your
 reflections (weekly → yearly) come pre-loaded with metrics so you only add what a
