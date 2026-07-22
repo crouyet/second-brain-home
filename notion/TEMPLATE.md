@@ -36,19 +36,21 @@ a **📊 Metrics** section (Claude fills) above the reflective questions (you fi
 | Date | Date | |
 | Mood average | Multi-select | Amazing / Good / Neutral / Heavy / Angry / Sad |
 
-### Daily habit-tracker (`DAILY_HABIT_TABLE_ID`)
-A **table, one row per day**. Columns = the habits you chose in `/setup` + mood + signals.
-Claude auto-fills the columns whose source is a connector (workouts←Strava,
-mood/sleep/cycle←Apple Health); you fill the manual ones. Suggested columns:
+### Habits — the daily habit tracker (`HABITS_DB_ID`)
+A **table, one row per day** (title `Day`, a `Date`). The template ships these columns;
+rename/add/remove to fit your life. Claude auto-fills the columns whose source is a connector;
+you tick the manual ones.
 | Column | Type | Source |
 |---|---|---|
-| Date | Date | |
-| Mood | Select (Amazing…Sad) | apple-health *or* manual |
-| Cycle phase | Text | apple-health |
-| Sleep (h) | Number | apple-health |
-| Workout | Checkbox | strava |
-| Meds/Supps | Checkbox | apple-health or manual |
-| *your habits* | Checkbox | manual (gym, reading, water, …) |
+| Mood (note the trailing space `Mood `) | Select (Amazing/Good/Neutral/Heavy/Angry/Sad) | apple-health *or* manual |
+| Ciclo | Text | apple-health |
+| Sueño (h) | Number | apple-health |
+| Gym / Yoga / Bicis / Paseo | Checkbox | strava (exercise) |
+| Suplements | Multi-select | apple-health / manual |
+| Skin Care / Morning Routine | Select / Multi-select | manual |
+| Lectura / Estudio · Socialize · Violin | Checkbox | manual |
+| Working Hours · Power Nap | Number | manual |
+| Workout · Progress | Formula | auto (rollup of the above) |
 
 ### Projects (`PROYECTOS_COLLECTION_ID`) — optional
 | Property | Type |

@@ -25,26 +25,26 @@ touch prompt files. Copy this file to `config.md` (same folder) and complete it.
 
 ## Notion collections
 Get these after duplicating & connecting the Notion template (`/setup` discovers them):
+- **HABITS_DB_ID:** `<uuid>`                <!-- "Habits" DB = the daily habit tracker -->
+- **REFLECTIONS_COLLECTION_ID:** `<uuid>`   <!-- "Reflections" DB (Weekly→Yearly, Mood average) -->
 - **TAREAS_COLLECTION_ID:** `<uuid>`        <!-- Tasks DB -->
-- **REFLECTIONS_COLLECTION_ID:** `<uuid>`   <!-- Reflections DB (Weekly→Yearly) -->
-- **DAILY_HABIT_TABLE_ID:** `<uuid>`        <!-- Daily habit-tracker table -->
 - **PROYECTOS_COLLECTION_ID:** `<uuid>`     <!-- Projects DB (optional) -->
 
 ## Habit tracker — signal → source
-For each daily signal, where does it come from? One of:
+The template's **Habits** DB (daily, one row/day) has columns like Mood, Gym, Yoga, Bicis,
+Paseo, Lectura/Estudio, Morning Routine, Skin Care, Suplements, Working Hours, Power Nap,
+Socialize, Violin, Commet, Ciclo, Sueño (h). Rename/add/remove to fit your life (the template
+explains how). For each signal, where does it come from? One of:
 `manual-notion` (you tick it) · `apple-health` · `strava` · `gcal`
 
-| Signal | Source | Notes |
+| Signal | Source | Habits column |
 |---|---|---|
-| mood | apple-health | State of Mind; or `manual-notion` to tap it yourself |
-| cycle | apple-health | menstrual phase → drives energy forecast |
-| sleep | apple-health | hours + timing |
-| medications / supplements | apple-health | or `manual-notion` |
-| workouts / training | strava | feeds the training×cycle metric |
-| calendar events | gcal | Peak Calendar + Routine |
-
-**habits_to_track:** (the checkbox columns in your Daily table — pick yours)
-- gym, yoga, reading, water, skincare, ...
+| mood | apple-health | `Mood ` (or manual) |
+| cycle | apple-health | `Ciclo` → drives energy forecast |
+| sleep | apple-health | `Sueño (h)` |
+| supplements | apple-health / manual | `Suplements` |
+| workouts | strava | `Gym` / `Yoga` / `Bicis` |
+| everything else | manual-notion | Skin Care, Reading, Working Hours, … |
 
 ## Finance module (optional)
 - **enabled:** false
