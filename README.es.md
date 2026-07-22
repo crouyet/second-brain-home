@@ -10,6 +10,10 @@ Health, y te habla por un bot de Telegram.
 
 > La implementación de referencia está en español rioplatense (el tono cálido, cero
 > reproche, es parte del diseño). Vos customizás todo.
+>
+> **Tu vault es solo una carpeta de archivos markdown** — Claude lo lee y escribe directo.
+> Obsidian es *opcional* (una GUI linda para navegar/editar a mano); el sistema entero
+> funciona sin él.
 
 ---
 

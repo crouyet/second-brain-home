@@ -10,6 +10,9 @@ your mood from Apple Health, and talks to you through a Telegram bot.
 
 > Reference implementation is in Rioplatense Spanish (the warm, no-reproach tone is
 > part of the design). Docs and setup are in English. You customize everything.
+>
+> **Your vault is just a folder of markdown files** — Claude reads and writes it directly.
+> Obsidian is *optional* (a nice GUI to browse/edit by hand); the whole system runs without it.
 
 ---
 

@@ -26,10 +26,19 @@ larga duración — es el punto único de falla del sistema: si el CLI se deslog
 Si falta el token, guialos a correr `claude setup-token` y pegarlo en `~/.hestia/claude-token.env`
 como `CLAUDE_CODE_OAUTH_TOKEN=...` (chmod 600).
 
-### 1. Vault
-Preguntá dónde quieren el vault (default `~/obsidian-second-brain`). Copiá `vault-template/`
-ahí. Escribí `~/.hestia/vault-root.env` con `VAULT_ROOT=<ruta>`. Copiá
-`Projects/Sistema/config.example.md` → `config.md`.
+### 1. Crear el vault
+El vault es **solo una carpeta de archivos markdown** — es el "cerebro" que Claude lee y
+escribe. **NO hace falta instalar Obsidian** para que funcione: todo el sistema opera
+headless (Claude + los ticks + el bot) sobre esos archivos.
+
+1. Preguntá dónde quieren el vault (default `~/second-brain`).
+2. **Creá la carpeta y copiá `vault-template/` completo ahí** (con su estructura Projects/,
+   Raw/, Inbox/, Wiki/ y el `.obsidian/` que ya viene). Esa copia ES su vault.
+3. Escribí `~/.hestia/vault-root.env` con `VAULT_ROOT=<ruta elegida>`.
+4. Copiá `Projects/Sistema/config.example.md` → `config.md` (ahí van a ir los IDs y prefs).
+5. **Obsidian es OPCIONAL** — ofrecelo, no lo impongas: si quieren una GUI para navegar/editar
+   a mano, que instalen Obsidian y hagan "Open folder as vault" apuntando a esta carpeta (el
+   `.obsidian/` ya trae los plugins recomendados). Si no, no pasa nada: Claude igual lo usa.
 
 ### 2. Notion (obligatorio)
 1. Guialos a **duplicar el template público** (ver `notion/TEMPLATE.md`) a su workspace.

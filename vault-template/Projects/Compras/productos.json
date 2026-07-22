@@ -1,0 +1,12 @@
+{
+  "_comment": "EJEMPLO. Tu inventario de compras. Editá con tus productos.",
+  "productos": [
+    {"nombre": "café", "frecuencia_dias": 20, "stock_actual": "medio", "canal": "supermercado", "ultimo_precio": 0},
+    {"nombre": "yerba", "frecuencia_dias": 14, "stock_actual": "bajo", "canal": "feria", "ultimo_precio": 0},
+    {"nombre": "verduras", "frecuencia_dias": 7, "stock_actual": "ok", "canal": "feria", "ultimo_precio": 0}
+  ],
+  "canales": {
+    "feria": {"dia_descuento": "martes", "descuento": "ejemplo 30%", "medio_pago": "<tu tarjeta>"},
+    "supermercado": {"dia_descuento": "miercoles", "descuento": "ejemplo 20%", "medio_pago": "<tu tarjeta>"}
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "_comment": "EJEMPLO. Mapa de comercios -> categoria, y alertas. Lo usa cierre-finanzas.",
+  "categorias": {
+    "SUPERMERCADO XYZ": "almacen",
+    "APP DELIVERY": "delivery",
+    "UBER|DIDI": "transporte"
+  },
+  "alertas": {
+    "_comment": "un comercio con cargo neto inesperado -> avisar que hay que reclamar",
+    "EJEMPLO SEGURO": "vigilar: si aparece cargo neto, reclamar"
+  }
+}
