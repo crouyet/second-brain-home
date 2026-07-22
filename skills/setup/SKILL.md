@@ -41,14 +41,20 @@ headless (Claude + los ticks + el bot) sobre esos archivos.
    `.obsidian/` ya trae los plugins recomendados). Si no, no pasa nada: Claude igual lo usa.
 
 ### 2. Notion (obligatorio)
-1. Guialos a **duplicar el template público** (ver `notion/TEMPLATE.md`) a su workspace.
-2. Conectar el **connector de Notion** en Claude (ajustes de conectores de claude.ai).
-3. **Descubrir los collection IDs:** con el connector conectado, buscá en su workspace las
-   bases **Tareas**, **Reflections**, la **tabla Daily habit-tracker** y **Proyectos**; sacá
-   el `collection://<uuid>` de cada una.
-4. Escribí los IDs en `config.md` (sección Notion) y en `~/.hestia/notion.env`
-   (`TAREAS_COLLECTION_ID`, `REFLECTIONS_COLLECTION_ID`, `HABITS_DB_ID`,
-   `PROYECTOS_COLLECTION_ID`).
+1. Pedí que conecten el **connector de Notion** en Claude (ajustes de conectores de claude.ai).
+2. **Traé el template a su workspace.** Dos vías, ofrecé la primera:
+   - **Copialo vos** (recomendado): duplicá el template `Second Brain Home`
+     (https://www.notion.com/templates/second-brain-home) al workspace de la persona con la
+     tool de duplicar de Notion. Si no podés duplicar el template público directo, guialos a
+     tocar **"Get template / Duplicar"** desde ese link (es un clic) y seguí.
+   - **O guialos** a hacer el "Get template" ellos y avisar cuando esté.
+3. **Descubrí y asociá los IDs de la copia** (esto es clave: al duplicar, las DBs reciben IDs
+   nuevos). Con el connector conectado, buscá en su workspace las bases del template y sacá su
+   `collection://<uuid>`: **Habits** (el habit tracker diario), **Reflections** (Weekly→Yearly),
+   **Tareas/Tasks**, **Proyectos** (opcional).
+4. Escribí esos IDs en `config.md` (sección Notion collections) y en `~/.hestia/notion.env`
+   (`HABITS_DB_ID`, `REFLECTIONS_COLLECTION_ID`, `TAREAS_COLLECTION_ID`, `PROYECTOS_COLLECTION_ID`).
+   Verificá con un query de prueba a cada base que los IDs quedaron bien.
 
 ### 3. Telegram (obligatorio)
 Corré `tools/hestia-bot/configure.sh` — ya es un wizard: pide el token de @BotFather y
