@@ -10,6 +10,11 @@ status: active
 its Notion IDs and preferences from here** instead of hardcoding them — so you never
 touch prompt files. Copy this file to `config.md` (same folder) and complete it.
 
+> **How skills use this:** prompts contain placeholders like `{{TAREAS_COLLECTION_ID}}`,
+> `{{REFLECTIONS_COLLECTION_ID}}` and paths like `${VAULT_ROOT}`. When a skill runs, Claude
+> resolves them from this file (the vault `CLAUDE.md` instructs it to). You never edit the
+> prompts — you edit this config.
+
 > IDs are not secrets (they're workspace identifiers), but real tokens/keys never go
 > here — those live in `~/.hestia/*.env`, outside the repo.
 
