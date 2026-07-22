@@ -34,7 +34,7 @@ LEYES: una sola cosa para mañana máximo · jamás reproche · barato primero (
 
 El envío deja los botones. Cuando la usuaria toca un mood, `tools/hestia-bot/bot.py`:
 
-1. Escribe `vault/Raw/life-signals/<hoy>-evening.json` con `{mood, time}` — **al instante, sin llamar a claude**. La captura de la señal no depende de que el CLI esté vivo (ver [[hestia-cli-logout-mata-todo]] si el nombre te suena).
+1. Escribe `vault/Raw/life-signals/<hoy>-evening.json` con `{mood, time}` — **al instante, sin llamar a claude**. La captura de la señal no depende de que el CLI esté vivo.
 2. Le avisa que **Claude le redacta la reflexión** — no le pide que escriba. Si dentro de 30 min manda un mensaje sin `/`, se guarda como `linea` (una CORRECCIÓN opcional que después gana sobre lo redactado). Si no manda nada, no pasa nada: el tap alcanza.
 3. **Dispara el espejo a Notion en ~90s** (`mirror_evening_to_notion`, en background): espera ese rato de gracia por si agrega una línea, y completa la sección "Revisión y Reflexión del Día" de la Daily de HOY (qué logró desde las tareas cerradas + qué ajustar) + setea `Mood average`. El único input humano es el mood; el resto lo escribe Claude, y aparece en Notion a los minutos de reflexionar.
 
