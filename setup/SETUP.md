@@ -8,10 +8,13 @@ This file is the manual fallback / reference. Everything you configure lands in
 **Secrets never go in the repo.**
 
 ## 0. Prerequisites
-- macOS, `python3`.
-- Claude Code with a long-lived token: run `claude setup-token`, save it to
-  `~/.hestia/claude-token.env` as `CLAUDE_CODE_OAUTH_TOKEN=...` (`chmod 600`).
-  This is the system's single point of failure — if the CLI logs out, everything stops.
+No dependencies to install — **zero pip packages** (the tools are stdlib-only Python) and
+`curl`/`launchctl`/`osascript` are macOS built-ins. You only need:
+- **Claude Code** (you already have it — it brings the `claude` CLI + Node) with a long-lived
+  token: run `claude setup-token`, save it to `~/.hestia/claude-token.env` as
+  `CLAUDE_CODE_OAUTH_TOKEN=...` (`chmod 600`). This is the system's single point of failure —
+  if the CLI logs out, everything stops.
+- **`python3`** must exist — check with `python3 --version`. If missing, `xcode-select --install`.
 
 ## 1. The vault (Obsidian optional)
 The vault is just a folder of markdown — it already ships in the clone as `vault/`. **No copy:**
