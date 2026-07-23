@@ -51,4 +51,3 @@ Antes de escribir en su nombre o tomar decisiones por ella, leé:
 
 - [[Projects/Compras/README|Compras]] — agente de compras inteligente (productos, descuentos, lugares).
 - [[Projects/Chefcito/README|Chefcito]] — agente culinario: inventario → meal prep accionable.
-- [[Projects/Wellness App/README|Wellness App]] — app gamificada por y para mujeres (en ideación).
