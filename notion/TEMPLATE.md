@@ -1,5 +1,7 @@
 # Notion setup
 
+*🌐 [Español](TEMPLATE.es.md)*
+
 The system reads and writes four Notion databases. Easiest path: **duplicate the public
 template**, then connect it to Claude so `/setup` can discover the IDs.
 

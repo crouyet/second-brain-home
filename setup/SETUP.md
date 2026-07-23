@@ -1,5 +1,7 @@
 # Manual setup
 
+*🌐 [Español](SETUP.es.md)*
+
 Prefer the guided path — run `/setup` in Claude Code and it walks you through all of this.
 This file is the manual fallback / reference. Everything you configure lands in
 `vault/Projects/Sistema/config.md` (IDs + preferences) and `~/.hestia/*.env` (secrets).

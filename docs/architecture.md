@@ -1,5 +1,7 @@
 # Architecture
 
+*🌐 [Español](architecture.es.md)*
+
 second-brain-home is an **agentic life OS**: sensors feed a kernel, the kernel decides,
 actuators act. The kernel is Claude reading a handful of markdown docs; there is no ML and
 no server you have to run in the cloud — just your Mac, your phone, and your accounts.
