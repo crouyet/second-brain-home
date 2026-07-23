@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ESQUELETO del dashboard mensual. /cierre-finanzas lo copia a YYYY-MM.html y reemplaza los
+     datos. Ver ../Dashboard spec.md (reglas: autocontenido, gráficos HTML/CSS o SVG inline,
+     cero CDN, cada gráfico responde una pregunta, sin movimientos completos). Cargá la skill
+     `dataviz` antes de tocar gráficos. Reemplazá todo lo marcado {{...}}. -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cierre {{YYYY-MM}} — Finanzas</title>
+<style>
+:root{
+  --page:#f4f3f0; --surface:#fdfdfc; --ink:#161512; --ink-2:#54524c; --muted:#8b8984;
+  --grid:#e6e4dd; --border:rgba(22,21,18,.08);
+  --accent:#2a78d6; --accent-strong:#1c5cab; --accent-wash:rgba(42,120,214,.07);
+  --good:#006300; --warn:#b97a00; --crit:#d03b3b;
+}
+@media (prefers-color-scheme: dark){:root{
+  --page:#0f0f0e; --surface:#1a1a19; --ink:#f5f4f0; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.09);
+  --accent:#3987e5; --accent-strong:#5598e7; --accent-wash:rgba(57,135,229,.10);
+  --good:#0ca30c; --warn:#fab219; --crit:#e66767;
+}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;padding:48px 32px 80px}
+.wrap{max-width:880px;margin:0 auto}
+a{color:var(--accent);text-decoration:none}
+h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
+h2{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:36px 0 14px}
+.lead{color:var(--ink-2);max-width:62ch;margin:8px 0}
+.nav{font-size:13.5px;margin-bottom:24px}.nav a{margin-right:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-bottom:14px}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tile .k{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.tile .v{font-size:26px;font-weight:700;margin:4px 0}
+.tile .d{font-size:13px}.up{color:var(--crit)}.down{color:var(--good)}
+.tile .r{font-size:13px;color:var(--ink-2);margin-top:6px}
+.bar{height:14px;border-radius:7px;background:var(--accent);margin:4px 0}
+.bar.ghost{background:var(--grid)}
+.row{display:flex;align-items:center;gap:10px;font-size:13.5px;margin:6px 0}
+.row .lbl{width:120px;color:var(--ink-2)}.row .track{flex:1}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td,th{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border)}
+.pri{font-weight:600;font-size:11.5px;padding:1px 8px;border-radius:99px}
+.alta{background:rgba(208,59,59,.12);color:var(--crit)}.media{background:var(--accent-wash);color:var(--accent-strong)}.baja{color:var(--muted)}
+.action{border-left:3px solid var(--accent);padding-left:16px}
+details{margin-top:24px;font-size:13px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1. HEADER -->
+  <div class="nav"><a href="../index.html">← índice</a> <a href="{{prev}}.html">← anterior</a> <a href="{{next}}.html">siguiente →</a></div>
+  <h1>Cierre {{Mes YYYY}}</h1>
+  <p class="lead"><b>{{La historia del mes en 2 líneas}}</b> — ¿mejor o peor?, ¿cuál de los 3 números importa este mes?, ¿cuál es LA acción?</p>
+
+  <!-- 2. PANEL DE CONTROL: 4 stat tiles -->
+  <h2>Panel de control</h2>
+  <div class="tiles">
+    <div class="card tile"><div class="k">Interés revolving · meta $0</div><div class="v">${{valor}}</div><div class="d down">▼ {{delta}} vs mes ant.</div><div class="r">{{lectura corta}}</div></div>
+    <div class="card tile"><div class="k">Plan de deuda</div><div class="v">{{cuota N/24}}</div><div class="d">{{estado}}</div><div class="r">{{interés restante}}</div></div>
+    <div class="card tile"><div class="k">{{Gasto vigilado, ej. delivery}}</div><div class="v">${{valor}}</div><div class="d down">▼ {{delta}}</div><div class="r">{{lectura}}</div></div>
+    <div class="card tile"><div class="k">Gasto real total</div><div class="v">${{valor}}</div><div class="d up">▲ {{delta}}</div><div class="r">{{puntual o hábito}}</div></div>
+  </div>
+
+  <!-- 3. QUÉ CAMBIÓ: barras divergentes por categoría (rojo subió / azul bajó) -->
+  <h2>Qué cambió</h2>
+  <div class="card">
+    <div class="row"><span class="lbl">{{Categoría}}</span><span class="track"><span class="bar" style="width:60%"></span></span><span>▲ {{$}}</span></div>
+    <div class="row"><span class="lbl">{{Categoría}}</span><span class="track"><span class="bar down" style="width:35%;background:var(--good)"></span></span><span>▼ {{$}}</span></div>
+    <p class="lead" style="margin-top:10px">{{Qué es puntual (ej. un viaje) vs qué es hábito.}}</p>
+  </div>
+
+  <!-- 4. DÓNDE SE FUE LA PLATA: barras horizontales, actual + anterior (ghost), top 8 + otros -->
+  <h2>Dónde se fue la plata</h2>
+  <div class="card">
+    <div class="row"><span class="lbl">{{Categoría}}</span><span class="track"><span class="bar" style="width:80%"></span><span class="bar ghost" style="width:70%"></span></span><span>${{}}</span></div>
+    <div class="row"><span class="lbl">{{Categoría}}</span><span class="track"><span class="bar" style="width:50%"></span><span class="bar ghost" style="width:55%"></span></span><span>${{}}</span></div>
+    <p class="lead" style="margin-top:8px;font-size:12.5px">Barra llena = este mes · fantasma = mes anterior (referencia).</p>
+  </div>
+
+  <!-- 5. LA PALANCA: progress del plan de deuda -->
+  <h2>La palanca</h2>
+  <div class="card">
+    <div class="k" style="font-size:13px;color:var(--muted)">Plan de deuda — cuota {{N}}/24 · {{estado}}</div>
+    <div style="height:16px;border-radius:8px;background:var(--grid);margin:8px 0;overflow:hidden"><div style="height:100%;width:{{pct}}%;background:var(--accent)"></div></div>
+    <p class="lead">{{Interés restante estimado · qué pasa si precancelás.}}</p>
+  </div>
+
+  <!-- 6. LO QUE ESTOY APRENDIENDO: 4 bloques con números -->
+  <h2>Lo que estoy aprendiendo</h2>
+  <div class="tiles">
+    <div class="card"><b>✅ Funcionó</b><p class="lead">{{con número}}</p></div>
+    <div class="card"><b>🔧 Necesita ajuste</b><p class="lead">{{con número}}</p></div>
+    <div class="card"><b>🔇 Ruido (puntual)</b><p class="lead">{{con número}}</p></div>
+    <div class="card"><b>👀 Seguimiento</b><p class="lead">{{con número}}</p></div>
+  </div>
+
+  <!-- 7. A REVISAR: tabla priorizada -->
+  <h2>A revisar</h2>
+  <div class="card"><table>
+    <tr><th>Prioridad</th><th>Cargo</th><th>Qué</th></tr>
+    <tr><td><span class="pri alta">ALTA</span></td><td>{{comercio}}</td><td>{{posible duplicado / reclamar}}</td></tr>
+    <tr><td><span class="pri media">MEDIA</span></td><td>{{comercio críptico}}</td><td>a identificar — nunca adivinar</td></tr>
+  </table></div>
+
+  <!-- 8. HACER, NO PENSAR: UNA acción -->
+  <h2>Hacer, no pensar</h2>
+  <div class="card action">
+    <b>{{LA acción del mes}}</b>
+    <p class="lead">Por qué: {{}} · Primer paso físico: {{}} · Tiempo: {{}} min · Guion: {{}} · Métrica que mejora: {{}} · Se verifica en el próximo cierre por: {{}}.</p>
+    <p class="lead" style="font-size:12.5px">(Esta acción se carga a Notion vía /planificar — regla 5b del sistema.)</p>
+  </div>
+
+  <!-- 9. FÓRMULAS -->
+  <details><summary>Cómo se calcula cada métrica</summary>
+    <p>{{Métrica}}: qué mide · fuente (Resumenes/) · qué excluye (reversas, financiero) · dirección deseada.</p>
+  </details>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finanzas — memoria visual</title>
+<style>
+:root{
+  --page:#f4f3f0; --surface:#fdfdfc; --ink:#161512; --ink-2:#54524c; --muted:#8b8984;
+  --border:rgba(22,21,18,.08);
+  --accent:#2a78d6; --accent-strong:#1c5cab; --accent-wash:rgba(42,120,214,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#0f0f0e; --surface:#1a1a19; --ink:#f5f4f0; --ink-2:#c3c2b7; --muted:#898781;
+    --border:rgba(255,255,255,.09);
+    --accent:#3987e5; --accent-strong:#5598e7; --accent-wash:rgba(57,135,229,.10);
+  }
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;padding:56px 32px 80px}
+.wrap{max-width:880px;margin:0 auto}
+a{color:var(--accent);text-decoration:none} a:hover{color:var(--accent-strong)}
+h1{font-size:32px;font-weight:700;letter-spacing:-.02em}
+.sub{color:var(--ink-2);margin:8px 0 32px;max-width:65ch}
+.norte{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 28px;margin-bottom:28px;font-size:14.5px;color:var(--ink-2)}
+.norte b{color:var(--ink)}
+.cierre{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 28px;margin-bottom:16px}
+.cierre .top{display:flex;justify-content:space-between;align-items:baseline}
+.cierre h2{font-size:20px;font-weight:700}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 10px;border-radius:99px;background:var(--accent-wash);color:var(--accent-strong)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Finanzas — memoria visual</h1>
+  <p class="sub">Índice de cierres mensuales. Cada cierre agrega su fila arriba del comentario marcado. Los dashboards se generan con la skill <code>/cierre-finanzas</code> a partir del esqueleto <code>Dashboards/TEMPLATE.html</code>.</p>
+
+  <div class="norte">
+    <b>Los 3 números que importan</b> (definí los tuyos en <code>Plan.md</code>): por ejemplo, interés revolving (meta $0), la cuota de tu plan de deuda, y el gasto que estés vigilando. Si mejoran mes a mes, lo demás es detalle.
+  </div>
+
+  <!-- NUEVOS CIERRES VAN ARRIBA DE ESTE COMENTARIO -->
+
+  <div class="cierre" style="opacity:.6">
+    <div class="top"><h2>YYYY-MM (ejemplo)</h2><span class="tag">borrador</span></div>
+    <p style="color:var(--ink-2);margin-top:8px">Cuando corras tu primer cierre, esta fila se reemplaza por el mes real con su frase de lectura y el link a <code>Dashboards/YYYY-MM.html</code>.</p>
+  </div>
+</div>
+</body>
+</html>
