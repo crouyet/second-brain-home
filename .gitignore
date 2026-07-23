@@ -5,6 +5,8 @@
 !*.env.example
 .mcp.json
 !.mcp.json.template
+# Per-user permission allows (Notion/Strava/gcal connector ids) — added by /setup:
+.claude/settings.local.json
 *token*
 *secret*
 *.pem

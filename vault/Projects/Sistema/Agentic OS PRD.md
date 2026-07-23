@@ -9,7 +9,7 @@ version: v1.3
 
 **Una línea**: Hestia (diosa del hogar, el agente master) le baja la carga mental a la usuaria **encargándose de cosas por ella** — entrega el día decidido, vigila las señales y registra todo lo que le cuenten; el input humano es siempre opcional.
 
-**Anti-objetivo explícito** (corrección de la usuaria, 2026-07-15): esto NO es un sistema de tracking que le pide responder preguntas cada mañana y noche. Toda pieza que exija disciplina diaria de carga está mal diseñada — se elimina o se vuelve opcional.
+**Anti-objetivo explícito**: esto NO es un sistema de tracking que le pide responder preguntas cada mañana y noche. Toda pieza que exija disciplina diaria de carga está mal diseñada — se elimina o se vuelve opcional.
 
 ## El problema
 
@@ -26,11 +26,11 @@ Perfil completo en [[../../Wiki/Perfil|Perfil]]. Lo que define el diseño: funci
 
 | Capa | Qué hace | Piezas |
 |---|---|---|
-| **Sensores** — entra info sin esfuerzo | capturan estado real | **health-receiver ✓** (sueño/ciclo/medicación, push automático en background, sin abrir nada) + **MCP health-auto-export ✓** (bonus en vivo si la app está abierta), trampa IG/WhatsApp, check-in opcional por Telegram, **Peak Calendar** ✓, Strava ✓, mood de Notion Reflections |
+| **Sensores** — entra info sin esfuerzo | capturan estado real | **health-receiver** (sueño/ciclo/medicación, push automático en background, sin abrir nada) + **MCP health-auto-export** (bonus en vivo si la app está abierta), trampa IG/WhatsApp, check-in opcional por Telegram, **Peak Calendar**, Strava, mood de las Daily de Notion |
 | **Kernel** — decide | reglas + señales + skills | [[Señales de riesgo]], reglas del [[README\|Sistema]] (máx 3, ×1.5, próxima acción física), prioridad predictiva vs. importancia real |
 | **Actuadores** — se presenta solo | Hestia ante sus ojos | **Telegram** (mensaje de la mañana 8:30 + alertas + respuestas), [[Morning Gate]] (bloqueo físico), launcher "OS" ([[Atajos Apple]] §8), respuestas de UNA acción |
 
-**Peak Calendar** (verificado 2026-07-15): publica las zonas de energía del día en Google Calendar con IDs parseables (`rhythmZone.brainFog/morningPeak/dip/eveningPeak/windDown`). Claude las lee por el conector de calendar — integración gratis. Y la queja "a Peak le falta info" se resuelve al revés: las life-signals del pulso son la info que le falta; `/revision` compara predicho vs. reportado.
+**Peak Calendar**: publica las zonas de energía del día en Google Calendar con IDs parseables (`rhythmZone.brainFog/morningPeak/dip/eveningPeak/windDown`). Claude las lee por el conector de calendar — integración gratis. Y la queja "a Peak le falta info" se resuelve al revés: las life-signals del pulso son la info que le falta; `/revision` compara predicho vs. reportado.
 
 **Prioridad predictiva** (en qué orden el kernel mira señales): energía → plata → casa → comida/suplementos → estudio/trabajo.
 **Importancia real de vida** (qué cuida más fuerte): plata → trabajo → comida/suplementos (impacta directo en mente y energía).
@@ -84,9 +84,9 @@ Toda regla lleva un número, un "nunca" o un check verificable. Las que ya exist
 
 | Versión | Qué entra | Se desbloquea cuando |
 |---|---|---|
-| **v1.1** ✓ | Morning Gate, `/ahora`, señales de riesgo, life-signals, Peak como sensor | hecho 2026-07-15 |
-| **v1.2 — Hestia** ✓ (hoy) | Bot de Telegram (el canal), tick de la mañana 8:30 sin preguntas, **MCP health-auto-export ✓** (fase del ciclo + sueño + medicación en vivo, sin reportar nada — la usuaria compró Health Auto Export Premium en vez del Atajo casero), 4 scheduled tasks, 3 reglas de autonomía | hecho 2026-07-15 |
-| **v1.3** ✓ (hoy) | Consejo de subagentes (la-contadora, la-entrenadora, la-veterana, la-abogada-del-diablo) + [[Contrato de autonomía\|contrato de autonomía formal]] (3 niveles + techo permanente) + **[[Trust ledger]]** (watch→queue→auto: cada capacidad gradúa con 10 corridas ≥90%, demotion automática). Heurística de `energy_forecast` formalizada en [[Energia]], parámetros ajustables por `/revision`. Wellness App reencuadrada como laboratorio n=1 incubando en Hestia | hecho 2026-07-15 |
+| **v1.1** | Morning Gate, `/ahora`, señales de riesgo, life-signals, Peak como sensor | base (incluido) |
+| **v1.2 — Hestia** | Bot de Telegram (el canal), tick de la mañana 8:30 sin preguntas, **MCP health-auto-export** (fase del ciclo + sueño + medicación en vivo, sin reportar nada — con Health Auto Export Premium, app de terceros, en vez del Atajo casero), scheduled tasks, 3 reglas de autonomía | base (incluido) |
+| **v1.3** | Consejo de subagentes (la-contadora, la-entrenadora, la-veterana, la-abogada-del-diablo) + [[Contrato de autonomía\|contrato de autonomía formal]] (3 niveles + techo permanente) + **[[Trust ledger]]** (watch→queue→auto: cada capacidad gradúa con 10 corridas ≥90%, demotion automática). Heurística de `energy_forecast` formalizada en [[Energia]], parámetros ajustables por `/revision`. Wellness App reencuadrada como laboratorio n=1 incubando en Hestia | base (incluido) |
 | **v2 — el ser funcional genera plata** | (a) **Estudio** como pieza de primera clase, con bloques en Peak ⚡️ (study_work_stall_risk ya lo vigila). (b) **Loop de business models**: hipótesis → experimento mínimo → medir → matar o escalar. WIP=1 hipótesis activa. Extractito = candidato natural. Regla de gamificación: parte de lo generado financia upgrades del propio OS — más tiempo y plata pa gastarla en vos. | 4 semanas de streaks (mañanas sin scroll + ≤3 cumplidas) |
 | **v2.1** | Dashboard de compu con datos vivos de Hestia — heredando la estética de tu home de Notion (la v0 conceptual): goals visibles, "Qué tal tu día Queen 💚", ciclo/energía/streaks reales | v1.3 andando |
 | **v2.2** (baja prioridad — MCP health-auto-export ya resuelve lo importante) | App iOS nativa Hestia: HealthKit completo, background delivery, el check-in como widget | cuenta Apple Developer (US$99/año), solo si el MCP de terceros se queda corto |

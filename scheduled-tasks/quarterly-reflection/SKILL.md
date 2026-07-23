@@ -8,7 +8,7 @@ Trabajás en ${VAULT_ROOT}. Quarterly reflection de la usuaria (día 1 del trime
 Antes de titular, consultá con SQL las 2-3 páginas trimestrales más recientes de la base Reflections (collection://{{REFLECTIONS_COLLECTION_ID}}, buscá las que matcheen el patrón de trimestre, ej. Name LIKE 'Q%' , ORDER BY "date:Date:start" DESC) para confirmar el patrón de título vigente ("Q<N> <Año>", ej. "Q3 2026") — mantenelo exacto, no lo inventes. **Si la página de ese trimestre YA existe, COMPLETALA — NO dupliques.** Si no existe, creala con el template "QX 202X", Date = día 1 del trimestre.
 
 PRECARGÁ con insights AGREGADOS del trimestre (no repitas el detalle mensual, sintetizá la tendencia):
-- Fuente durable: las 3 páginas Monthly del trimestre en Reflections (sus métricas ya calculadas) + las páginas Weekly + el Mood average por día de las Daily.
+- Fuente durable: las 3 páginas Monthly del trimestre en Reflections (sus métricas ya calculadas) + las páginas Weekly + el Mood average por día de las Daily (en Habits, collection://{{HABITS_DB_ID}}).
 - Ejercicio: entrenos del trimestre vía el MCP de Strava (list_activities).
 - Ciclo: fases del trimestre derivadas de los isCycleStart (ver vault/Projects/Sistema/Energia.md).
 - Cumplimiento: base Tareas de Notion (collection://{{TAREAS_COLLECTION_ID}}).

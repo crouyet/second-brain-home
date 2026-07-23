@@ -66,8 +66,26 @@ a **Routine** calendar (see [`../docs/architecture.md`](../docs/architecture.md)
 ./tools/hestia-bot/install.sh          # bot LaunchAgent
 ./tools/health-receiver/install.sh     # receiver LaunchAgent (if using Apple Health)
 ```
-Register the scheduled tasks from `scheduled-tasks/` (copy to `~/.claude/scheduled-tasks/` or
-create them via the scheduled-tasks MCP), adjusting times to your timezone.
+Register the scheduled tasks from `scheduled-tasks/` into **`~/.claude/scheduled-tasks/`** (copy
+them there, or create them via the scheduled-tasks MCP), adjusting times to your timezone. This is
+the one thing that is *not* project-level: the scheduler discovers tasks globally, not from the repo.
+Skills and agents, by contrast, live at project level in `.claude/skills` and `.claude/agents` and
+are found automatically because the routines run from `VAULT_ROOT`.
+
+## 7b. Permissions — let the routines run unattended
+Routines run **headless** (the bot via `claude -p`, the scheduled tasks via cron): nobody is there
+to click "allow". Without an allowlist each routine stalls on the first permission and sends nothing.
+The repo ships `.claude/settings.json` with the portable base (`acceptEdits` for vault edits + the
+Telegram `send.sh`). Add your per-user connector allows to **`.claude/settings.local.json`**
+(git-ignored — your connector ids never get committed):
+```json
+{ "permissions": { "allow": [
+  "mcp__<notion-id>__*",
+  "Bash(python3 tools/finanzas/categorizar.py:*)"
+] } }
+```
+Include Notion (required); add Strava / Google Calendar / Apple-Health receiver only if you connected
+them. Find the real tool prefix by listing the connector's tools (`mcp__…__…`) on your machine.
 
 ## 8. Smoke test
 ```bash

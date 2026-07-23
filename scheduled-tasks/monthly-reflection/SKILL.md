@@ -10,7 +10,7 @@ Antes de titular, consultá con SQL las 2-3 páginas Monthly más recientes de l
 **Si la página de ese mes YA existe (mismo nombre, ej. "July Monthly"), COMPLETALA — NO dupliques.** Si no existe, creala con el título del patrón, template "Monthly reflection", Date = día 1.
 
 SECCIÓN MÉTRICAS (automática, del mes que cerró):
-- Mood: el `Mood average` de las páginas Daily del mes en Reflections (collection://{{REFLECTIONS_COLLECTION_ID}}) — fuente DURABLE (la llena la reflexión diaria). NO uses vault/Raw/health/Mood.json como serie: es un snapshot que se sobreescribe en cada sync, no tiene historia; sirve solo como fallback del día más reciente.
+- Mood: el `Mood average` de las páginas Daily del mes en Habits (collection://{{HABITS_DB_ID}}) — fuente DURABLE (la llena la reflexión diaria). NO uses vault/Raw/health/Mood.json como serie: es un snapshot que se sobreescribe en cada sync, no tiene historia; sirve solo como fallback del día más reciente.
 - Ejercicio: entrenos del mes vía el MCP de Strava (list_activities) — fuente durable via API.
 - Ciclo: fase de cada día derivada de los `isCycleStart` de vault/Raw/health/Cycle.json (ver [[Energia]]).
 - Sueño: vault/Raw/health/Sleep.json (snapshot — si no hay historia del mes, seguí sin él).

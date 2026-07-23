@@ -32,11 +32,11 @@ El que tenés + un agregado: **el descanso trae una micro-tarea, no descanso vac
 2. "Agregar a nota" → nota "Compras por registrar" en Notas de Apple.
 3. En la próxima sesión de `/compras`, Claude vacía esa nota al vault (`ultima_compra`, precios, stock). Cero fricción en el momento, cero dato perdido.
 
-## 4. Log de suplementos 💊 ✓ ya resuelto — no hace falta ningún atajo
+## 4. Log de suplementos 💊 — no hace falta ningún atajo
 
-Vos ya cargás tus tomas en Salud → Medicamentos, como siempre hiciste. Eso alcanza: el MCP health-auto-export (§5) lo lee de ahí, en vivo. No hace falta ningún atajo extra, ni contarle al bot "tomé X" — eso se sacó del bot (2026-07-15) porque quedó redundante.
+Si cargás tus tomas en Salud → Medicamentos, con eso alcanza: el MCP health-auto-export (§5) lo lee de ahí, en vivo. No hace falta ningún atajo extra ni contarle al bot "tomé X" — sería redundante.
 
-## 5. Health Auto Export MCP 🩺 — el sensor de cuerpo de Hestia ✓ (comprada 2026-07-15)
+## 5. Health Auto Export MCP 🩺 — el sensor de cuerpo de Hestia
 
 Reemplaza al plan original de Atajos + iCloud (Shortcuts no puede leer medicamentos, ni en iOS 26 — verificado). **Health Auto Export Premium** (US$5,99/año) da dos caminos, complementarios:
 
@@ -54,15 +54,15 @@ Servidor MCP propio corriendo en el iPhone: Hestia puede consultar sueño/ciclo/
 3. En la Mac: `cd ${VAULT_ROOT} && pbpaste > .mcp.json` (Universal Clipboard sincroniza el copiado del iPhone). El bearer token queda ahí — **ese archivo tiene un secreto, no se comparte ni se sube a git**.
 4. Confirmar que el JSON pegado tiene `mcpServers.health-auto-export` con `url` y `headers.Authorization`.
 
-**Limitación conocida (confirmada 2026-07-15)**: el server MCP solo responde con la app abierta y en primer plano. Por eso existe la vía confiable de arriba — no hace falta abrir nada para que Hestia tenga datos. La IP del server (`http://<TU-IP-LAN>:9000/mcp` al momento de configurarlo) puede cambiar si el router reasigna DHCP.
+**Limitación conocida**: el server MCP solo responde con la app abierta y en primer plano. Por eso existe la vía confiable de arriba — no hace falta abrir nada para que Hestia tenga datos. La IP del server (`http://<TU-IP-LAN>:9000/mcp` al momento de configurarlo) puede cambiar si el router reasigna DHCP.
 
 Se descartó usar el "Sync to Mac"/AutoSync de la app: formato binario propio (.hae, lzfse) y no incluye ciclo ni medicamentos.
 
 Suplementos ya NO se registran contándole al bot — vienen automático de acá. *(App nativa propia con HealthKit: roadmap v2.2 del [[Agentic OS PRD|PRD]], baja prioridad con esto andando.)*
 
-## 6. Pulso mínimo de mañana 🌅 *(DEPRECADO 2026-07-15 — lo reemplazó el bot de Telegram)*
+## 6. Pulso mínimo de mañana 🌅 *(DEPRECADO — lo reemplazó el bot de Telegram)*
 
-**No hace falta armar este atajo.** El check-in ahora son los 3 botones opcionales (🪫🔋⚡️) del mensaje de la mañana de Hestia en Telegram — cero configuración, y si no los tocás no pasa nada. El combo con Daily Reflection: pedíselo al bot ("armá mi reflection") o queda para el launcher. La spec de abajo queda solo por si algún día hace falta el fallback sin Telegram.
+**No hace falta armar este atajo.** El check-in ahora son los 3 botones opcionales (🪫🔋⚡️) del mensaje de la mañana de Hestia en Telegram — cero configuración, y si no los tocás no pasa nada. La spec de abajo queda solo por si algún día hace falta el fallback sin Telegram.
 
 <details><summary>Spec original (fallback)</summary>
 
@@ -75,7 +75,6 @@ Suplementos ya NO se registran contándole al bot — vienen automático de acá
    `{"date":"[FechaISO]","time":"[Hora actual, formato HH:mm]","energia":"[Energia]","cuerpo":"[Cuerpo]","mental":"[Mental]","scroll_intents":0}`
 4. Acción **"Guardar archivo"** → **elegí "iCloud Drive"** en el picker de ubicación (si no aparece la carpeta `life-signals`, creála una vez a mano desde la app Archivos, después el atajo la encuentra sola) → nombre de archivo con la **misma variable**: `[FechaISO]-morning.json` → **"Preguntar antes de reemplazar": OFF** (si no, se traba pidiendo confirmación cada mañana).
 5. Si energía=`baja` o cuerpo=`frío`: acción "Mostrar notificación" con la secuencia corporal: *"Abrigo → agua → suplemento → comida mínima → luz 3-5 min. Una por vez."*
-6. **Combo con Daily Reflection**: agregá "Ejecutar acceso directo" al final y elegí tu atajo que crea la Daily Reflection en Notion (aunque la deje en blanco). Un tap, dos cosas: la señal queda en el vault y el día ya tiene su página en Notion esperando — se llena en `/revision` o cuando tengas 2 minutos.
 
 **Gotchas más comunes de este atajo** (si se traba, suele ser uno de estos):
 - El "Elegir del menú" por defecto no crea variable propia — tenés que tocar el resultado y ponerle nombre, si no la acción de Texto no lo encuentra en la lista de variables mágicas.

@@ -20,9 +20,9 @@ Modelo completo en [[Agentic OS PRD]]: **sensores** (capturan sin esfuerzo) → 
 
 - **iPhone/Watch = la compuerta.** [[Morning Gate]] (Screen Time + Focus + trampa) y Atajos ([[Atajos Apple]]) — el launcher "OS" es el único botón de entrada.
 - **Obsidian (este vault) = la mente.** Sistemas, conocimiento, instrucciones de agentes, señales diarias (`Raw/life-signals/`). Todo agente opera leyendo estas notas.
-- **Notion = el manager (GTD).** Ejecución: base Proyectos (`collection://{{PROYECTOS_COLLECTION_ID}}`), base Tareas (`collection://{{TAREAS_COLLECTION_ID}}`, con Due → aparece en Notion Calendar; tags de contexto: ⏲️ -5 mins, 🪫 Low Batery, 💻 Compu, 🏙️ Fuera de casa), y tu Journal de objetivos del año + la base Reflections (`collection://{{REFLECTIONS_COLLECTION_ID}}`: daily con mood, weekly, monthly, quarterly, yearly).
+- **Notion = el manager (GTD).** Ejecución: base Proyectos (`collection://{{PROYECTOS_COLLECTION_ID}}`), base Tareas (`collection://{{TAREAS_COLLECTION_ID}}`, con Due → aparece en Notion Calendar; tags de contexto: ⏲️ -5 mins, 🪫 Low Batery, 💻 Compu, 🏙️ Fuera de casa), y tu Journal de objetivos del año + la base Habits (`collection://{{HABITS_DB_ID}}`: las páginas Daily con mood y hábitos) + la base Reflections (`collection://{{REFLECTIONS_COLLECTION_ID}}`: weekly, monthly, quarterly, yearly).
 - **Cloud** (tareas programadas de Claude): el kernel que empuja — pulso 7:30, plan 21:30, y las [[Señales de riesgo]] que se re-chequean a diario.
-- **Datos de cuerpo**: **MCP health-auto-export ✓** (sueño/ciclo/entrenos/medicación en vivo desde el iPhone, [[Atajos Apple]] §5 — Hestia estima la fase del ciclo sin preguntar, la usuaria sigue cargando en Salud como siempre), **Peak Calendar** (curva de energía, conector de calendar ✓), Strava (✓).
+- **Datos de cuerpo**: **MCP health-auto-export** (sueño/ciclo/entrenos/medicación en vivo desde el iPhone, [[Atajos Apple]] §5 — Hestia estima la fase del ciclo sin preguntar; seguís cargando en Salud como siempre), **Peak Calendar** (curva de energía, conector de calendar), Strava.
 - **Telegram = la boca de Hestia**: el mensaje de la mañana, las alertas, y todo lo que la usuaria le cuente ("compré…", "tomé…", "qué hago"). Setup en `tools/hestia-bot/SETUP.md`.
 
 ## Las piezas
@@ -126,7 +126,7 @@ Va a pasar. El protocolo es uno solo: abrir Claude, decir "me caí del sistema",
   formal (3 niveles + techo permanente), [[Trust ledger]] (tiers
   watch→queue→auto), heurística de energía formalizada en [[Energia]] (parámetros
   ajustables, ya no vive inline en el prompt del tick). `compras-viernes` pasa por
-  la-contadora antes de mandar la lista; `revision-domingo` administra el ledger
+  la-contadora antes de mandar la lista; `weekly-reflection` administra el ledger
   y verifica la mejora semanal con la-veterana. [[../Wellness App/README|Wellness
   App]] reencuadrada: incubando en Hestia (laboratorio n=1), no se construye app.
 - **2026-07-15 · v1.2 — Hestia 🏛️** — el sistema pasa de preguntar a encargarse: bot de Telegram (`tools/hestia-bot/`), [[Mañana Hestia]] 8:30 con el día decidido y energía predicha (ciclo+sueño+Peak, input opcional), **MCP health-auto-export** (sueño/ciclo/medicación en vivo, sin Atajos ni reportar nada), 4 tareas programadas reales, 3 reglas de autonomía (nunca paga/borra/publica). Eliminados: pulso con preguntas obligatorias, plan nocturno interactivo, y el log manual de suplementos por chat. Consejo de subagentes + trust ledger → roadmap v1.3 del [[Agentic OS PRD|PRD]].

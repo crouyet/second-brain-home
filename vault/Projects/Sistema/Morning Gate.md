@@ -19,20 +19,20 @@ Focus no bloquea apps; Screen Time sí. Esta capa es la que aguanta el "solo un 
 
 Checklist de configuración (una vez, ~15 min):
 
-- [X] Ajustes → Tiempo en pantalla → **Tiempo de inactividad** (Downtime): desde tu hora de dormir hasta **09:30**.
-- [X] Activar **"Bloquear durante el tiempo de inactividad"** (el bloqueo real, no solo el aviso).
-- [X] **Siempre permitidas** → dejar SOLO: Teléfono, Mensajes, Salud, Atajos, Calendario, Reloj.
-- [X] Sacar de "Siempre permitidas" a Instagram, WhatsApp, YouTube y Safari (quedan bloqueadas hasta las 09:30).
-- [X] Comunicación durante inactividad → contactos urgentes permitidos **por llamada/SMS** (no por WhatsApp).
-- [X] Código de Tiempo en pantalla: idealmente que lo ponga otra persona, o uno que no te sepas de memoria. 1937
+- [ ] Ajustes → Tiempo en pantalla → **Tiempo de inactividad** (Downtime): desde tu hora de dormir hasta **09:30**.
+- [ ] Activar **"Bloquear durante el tiempo de inactividad"** (el bloqueo real, no solo el aviso).
+- [ ] **Siempre permitidas** → dejar SOLO: Teléfono, Mensajes, Salud, Atajos, Calendario, Reloj.
+- [ ] Sacar de "Siempre permitidas" a Instagram, WhatsApp, YouTube y Safari (quedan bloqueadas hasta las 09:30).
+- [ ] Comunicación durante inactividad → contactos urgentes permitidos **por llamada/SMS** (no por WhatsApp).
+- [ ] Código de Tiempo en pantalla: idealmente que lo ponga otra persona, o uno que no te sepas de memoria.
 
 ## Capa 2 — Focus "Morning Gate" (la pantalla que ves)
 
-- [x] Ajustes → Concentración → nueva: **Morning Gate**.
-- [x] Automatización: se activa a tu hora de despertar (o al desactivar la alarma de Sueño).
+- [ ] Ajustes → Concentración → nueva: **Morning Gate**.
+- [ ] Automatización: se activa a tu hora de despertar (o al desactivar la alarma de Sueño).
 - [ ] Pantalla de inicio: mostrar SOLO una página con widgets de clima, calendario (con Peak Calendar visible — ves tu curva de energía del día), salud, y el botón del **Pulso mínimo** ([[Atajos Apple]] §6).
-- [x] Silenciar notificaciones de IG y WhatsApp; permitir llamadas de favoritos.
-- [x] Compartir entre dispositivos: ON (Watch y Mac entran en modo compuerta también).
+- [ ] Silenciar notificaciones de IG y WhatsApp; permitir llamadas de favoritos.
+- [ ] Compartir entre dispositivos: ON (Watch y Mac entran en modo compuerta también).
 
 ## Capa 3 — Atajo trampa (el sensor)
 
@@ -49,7 +49,7 @@ Tres preguntas de menú, nada de tipear ([[Atajos Apple]] §6):
 2. **Cuerpo**: frío / hambre / dolor-cansancio / ok
 3. **Mental**: clara / dispersa / ansiosa / pesada
 
-→ escribe `YYYY-MM-DD-morning.json` en iCloud Drive/life-signals/ (schema en `vault/Raw/life-signals/README.md`) y, en el mismo tap, dispara la Daily Reflection de Notion (aunque quede en blanco — arranca el día con la página lista).
+→ escribe `YYYY-MM-DD-morning.json` en iCloud Drive/life-signals/ (schema en `vault/Raw/life-signals/README.md`).
 
 Suplementos se sacó de acá (sumaba fricción): vive en [[Atajos Apple]] §4, registrado en el momento de tomarlo, no como recuerdo del día siguiente.
 

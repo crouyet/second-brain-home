@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(tools/hestia-bot/send.sh:*)",
+      "Bash(./tools/hestia-bot/send.sh:*)"
+    ],
+    "ask": [
+      "Edit(.claude/**)",
+      "Write(.claude/**)",
+      "Edit(tools/**)",
+      "Write(tools/**)"
+    ],
+    "deny": [
+      "Read(./.hestia/**)",
+      "Read(~/.hestia/**)",
+      "Bash(rm:*)",
+      "Bash(sudo:*)",
+      "Bash(git push:*)",
+      "Bash(launchctl:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  }
+}

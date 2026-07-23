@@ -54,7 +54,7 @@ LIFE_SIGNALS = VAULT_REPO / "vault" / "Raw" / "life-signals"
 # IDs de colecciones Notion (el /setup los descubre y escribe en ~/.hestia/notion.env)
 _notion = _read_env_file(HESTIA_DIR / "notion.env")
 TAREAS_COLLECTION = _notion.get("TAREAS_COLLECTION_ID", "")
-REFLECTIONS_COLLECTION = _notion.get("REFLECTIONS_COLLECTION_ID", "")
+HABITS_COLLECTION = _notion.get("HABITS_DB_ID", "")  # las páginas Daily viven en Habits
 
 
 def log(msg: str) -> None:
@@ -281,7 +281,7 @@ def mirror_evening_to_notion() -> None:
               else "redactá UNA sugerencia corta desde lo que quedó sin cerrar ese día y el mood, cero reproche. ")
     prompt = (
         f"Completá SOLO la sección 'Revisión y Reflexión del Día' de la Daily del {dia} en la base "
-        f"Reflections de Notion (collection://{REFLECTIONS_COLLECTION}: página con "
+        f"Habits de Notion (collection://{HABITS_COLLECTION}: página con "
         f"Date = {dia} y Name '{weekday_en} Daily'; si no existe, creala con el template 'Daily "
         f"Reflection', Name '{weekday_en} Daily', Date = {dia}). "
         f"MOOD: si vault/Raw/health/Mood.json tiene un stateOfMind cuyo start cae en {dia}, usá ESE "
