@@ -43,16 +43,20 @@ escribe. Ya viene en el repo que clonaron: **`<repo>/vault/`** (Projects/, Raw/,
 
 ### 2. Notion (obligatorio)
 1. Pedí que conecten el **connector de Notion** en Claude (ajustes de conectores de claude.ai).
-2. **Traé el template a su workspace.** Dos vías, ofrecé la primera:
-   - **Copialo vos** (recomendado): duplicá el template `Second Brain Home`
-     (https://www.notion.com/templates/second-brain-home) al workspace de la persona con la
-     tool de duplicar de Notion. Si no podés duplicar el template público directo, guialos a
-     tocar **"Get template / Duplicar"** desde ese link (es un clic) y seguí.
-   - **O guialos** a hacer el "Get template" ellos y avisar cuando esté.
-3. **Descubrí y asociá los IDs de la copia** (esto es clave: al duplicar, las DBs reciben IDs
-   nuevos). Con el connector conectado, buscá en su workspace las bases del template y sacá su
-   `collection://<uuid>`: **Habits** (el habit tracker diario), **Reflections** (Weekly→Yearly),
-   **Tareas/Tasks**, **Proyectos** (opcional).
+2. **PREGUNTÁ primero: ¿ya usás Notion con tus propias bases, o arrancás de cero?** El sistema
+   no está atado al template — habla con Notion solo por los IDs del `config.md`. Dos caminos:
+   - **Arranca de cero** → **Traé el template.** Copialo vos (recomendado): duplicá `Second Brain
+     Home` (https://www.notion.com/templates/second-brain-home) al workspace con la tool de
+     duplicar de Notion; si no podés, guialos al **"Get template / Duplicar"** (un clic).
+   - **Ya tiene Notion** → **reusá lo suyo, no dupliques todo.** Para cada base que ya tenga (típico:
+     Tareas), usás SU id y le agregás las props que falten (Tareas necesita `Due`, `Status`,
+     `Priority`, `Tags` — ver `notion/TEMPLATE.md`). **Reflections** y **Habits** casi nunca las
+     tienen en la forma exacta: duplicá solo esas dos del template, o crealas con el schema de
+     `TEMPLATE.md`. Proyectos es opcional.
+3. **Descubrí y asociá los IDs** (al duplicar, las DBs reciben IDs nuevos). Con el connector
+   conectado, sacá el `collection://<uuid>` de cada base que vayan a usar (propias o del template):
+   **Habits**, **Reflections**, **Tareas/Tasks**, **Proyectos** (opcional). Si reusan una base
+   propia, verificá que tenga las props requeridas y agregá las que falten antes de seguir.
 4. Escribí esos IDs en `config.md` (sección Notion collections) y en `~/.hestia/notion.env`
    (`HABITS_DB_ID`, `REFLECTIONS_COLLECTION_ID`, `TAREAS_COLLECTION_ID`, `PROYECTOS_COLLECTION_ID`).
    Verificá con un query de prueba a cada base que los IDs quedaron bien.
