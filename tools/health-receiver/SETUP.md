@@ -21,6 +21,9 @@ Repetí esto **3 veces** (una por cada tipo de dato — la app solo permite un t
    - Automation 1 → **Cycle Tracking**
    - Automation 2 → **Medications** (requiere iOS 26+, ya lo tenés)
    - Automation 3 → **Health Metrics** → seleccioná solo **Sleep Analysis** (no selecciones "todas las métricas", tira demasiado dato y puede fallar en background)
+
+<img width="275" alt="image" src="https://github.com/user-attachments/assets/c443914f-02f4-45c1-86ad-27f6722785dc" />
+
 6. **Export Format**: JSON
 7. **Date Range**: `Since Last Sync` (manda solo lo nuevo cada vez)
 8. **Sync Cadence**: cada 6 horas está bien (no hace falta más seguido)
