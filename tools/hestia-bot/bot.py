@@ -46,7 +46,7 @@ def _read_env_file(path: Path) -> dict:
 # Portabilidad: el /setup escribe estos archivos en ~/.hestia/. Defaults sensatos.
 VAULT_REPO = Path(
     _read_env_file(HESTIA_DIR / "vault-root.env").get(
-        "VAULT_ROOT", str(Path.home() / "obsidian-second-brain")
+        "VAULT_ROOT", str(Path.home() / "second-brain")
     )
 ).expanduser()
 LIFE_SIGNALS = VAULT_REPO / "vault" / "Raw" / "life-signals"

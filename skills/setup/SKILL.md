@@ -55,6 +55,9 @@ headless (Claude + los ticks + el bot) sobre esos archivos.
 4. Escribí esos IDs en `config.md` (sección Notion collections) y en `~/.hestia/notion.env`
    (`HABITS_DB_ID`, `REFLECTIONS_COLLECTION_ID`, `TAREAS_COLLECTION_ID`, `PROYECTOS_COLLECTION_ID`).
    Verificá con un query de prueba a cada base que los IDs quedaron bien.
+5. **Sugerí [Notion Calendar](https://www.notion.so/product/calendar)** (app gratis): conectá la
+   base **Tareas** para ver las tareas del día por su `Due` en un calendario real, al lado de tu
+   agenda. El tick de la mañana igual te decide las ≤3, pero el calendario es el pantallazo visual.
 
 ### 3. Telegram (obligatorio)
 Corré `tools/hestia-bot/configure.sh` — ya es un wizard: pide el token de @BotFather y

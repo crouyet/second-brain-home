@@ -32,7 +32,7 @@ Repetí esto **3 veces** (una por cada tipo de dato — la app solo permite un t
 En la app, abrí una automation y tocá **Manual Export** una vez — así confirmás que llega. En tu Mac:
 
 ```
-cat ~/obsidian-second-brain/vault/Raw/health/cycle-tracking.json
+cat "$VAULT_ROOT"/vault/Raw/health/cycle-tracking.json
 ```
 
 Si aparece un JSON con datos, está andando.

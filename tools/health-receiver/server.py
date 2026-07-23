@@ -27,7 +27,7 @@ def _vault_root() -> Path:
             line = raw.strip()
             if line.startswith("VAULT_ROOT="):
                 return Path(line.split("=", 1)[1].strip()).expanduser()
-    return Path.home() / "obsidian-second-brain"
+    return Path.home() / "second-brain"
 
 
 HEALTH_DIR = _vault_root() / "vault" / "Raw" / "health"

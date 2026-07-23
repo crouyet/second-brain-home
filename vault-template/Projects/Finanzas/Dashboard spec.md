@@ -32,7 +32,7 @@ Refinada del sketch original. El objetivo no es un resumen lindo: es una herrami
 5. **La palanca**: progress del plan (cuota N/24, estado: activo/consultado/precancelado, interés restante).
 6. **Lo que estoy aprendiendo**: 4 bloques con números (funcionó / necesita ajuste / ruido / seguimiento).
 7. **A revisar**: tabla priorizada (ALTA/MEDIA/BAJA) — separada de patrones confirmados.
-8. **Hacer, no pensar**: UNA acción — por qué, primer paso físico, tiempo, guion listo, métrica que mejora, cómo se verifica el próximo cierre. La acción además se carga a Notion (regla 5b del sistema).
+8. **La acción del mes**: UNA acción — por qué, primer paso, tiempo, guion listo, métrica que mejora, cómo se verifica el próximo cierre. La acción además se carga a Notion (regla 5b del sistema).
 9. **`<details>` de fórmulas**: qué mide cada métrica, fuente, qué excluye, dirección.
 
 ## Métricas — capa antes que gráficos
