@@ -39,6 +39,7 @@ cp vault/Projects/Sistema/config.example.md vault/Projects/Sistema/config.md
    ```
 4. Sugerido: conectá la base **Tareas** a [Notion Calendar](https://www.notion.so/product/calendar)
    (app gratis) para ver las tareas del día por su `Due` en un calendario real.
+<img width="1064" height="522" alt="notion calendar" src="https://github.com/user-attachments/assets/5f388396-1bc8-42c7-9c21-d1d774f3da6e" />
 
 ## 3. Telegram (obligatorio)
 ```bash
