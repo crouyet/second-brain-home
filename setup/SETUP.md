@@ -11,12 +11,14 @@ This file is the manual fallback / reference. Everything you configure lands in
   `~/.hestia/claude-token.env` as `CLAUDE_CODE_OAUTH_TOKEN=...` (`chmod 600`).
   This is the system's single point of failure — if the CLI logs out, everything stops.
 
-## 1. Create the vault (Obsidian optional)
-The vault is just a folder of markdown. Obsidian is optional (a GUI to browse/edit).
+## 1. The vault (Obsidian optional)
+The vault is just a folder of markdown — it already ships in the clone as `vault/`. **No copy:**
+the cloned repo (e.g. `~/second-brain-home`) is your `VAULT_ROOT`; the tools resolve it from their
+own location. Your private notes live in `vault/` but stay out of git (see `.gitignore`).
 ```bash
-cp -R vault-template ~/second-brain          # your vault
-mkdir -p ~/.hestia && echo "VAULT_ROOT=$HOME/second-brain" > ~/.hestia/vault-root.env
-cp ~/second-brain/Projects/Sistema/config.example.md ~/second-brain/Projects/Sistema/config.md
+cp vault/Projects/Sistema/config.example.md vault/Projects/Sistema/config.md
+# optional — only if your clone isn't the default location:
+# mkdir -p ~/.hestia && echo "VAULT_ROOT=$(pwd)" > ~/.hestia/vault-root.env
 ```
 
 ## 2. Notion (required)

@@ -11,12 +11,12 @@
 *.key
 
 # ── PERSONAL DATA (this is a PUBLIC repo — no real user data ever) ─────
-# The vault-template ships only fictional seed content. Real data is ignored:
-vault-template/Raw/health/*.json
-vault-template/Raw/life-signals/*.json
-vault-template/Projects/Finanzas/Resumenes/*
-!vault-template/Projects/Finanzas/Resumenes/.gitkeep
-!vault-template/Projects/Finanzas/Resumenes/README.md
+# The vault ships only fictional seed content. Real data is ignored:
+vault/Raw/health/*.json
+vault/Raw/life-signals/*.json
+vault/Projects/Finanzas/Resumenes/*
+!vault/Projects/Finanzas/Resumenes/.gitkeep
+!vault/Projects/Finanzas/Resumenes/README.md
 # Never commit real bank statements / exports
 *.xls
 *.xlsx
@@ -24,8 +24,8 @@ vault-template/Projects/Finanzas/Resumenes/*
 *.csv
 
 # ── OBSIDIAN ──────────────────────────────────────────────────────────
-vault-template/.obsidian/workspace*.json
-vault-template/.obsidian/cache
+vault/.obsidian/workspace*.json
+vault/.obsidian/cache
 
 # ── PYTHON ────────────────────────────────────────────────────────────
 __pycache__/

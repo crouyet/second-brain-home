@@ -26,19 +26,20 @@ larga duración — es el punto único de falla del sistema: si el CLI se deslog
 Si falta el token, guialos a correr `claude setup-token` y pegarlo en `~/.hestia/claude-token.env`
 como `CLAUDE_CODE_OAUTH_TOKEN=...` (chmod 600).
 
-### 1. Crear el vault
+### 1. El vault
 El vault es **solo una carpeta de archivos markdown** — es el "cerebro" que Claude lee y
-escribe. **NO hace falta instalar Obsidian** para que funcione: todo el sistema opera
-headless (Claude + los ticks + el bot) sobre esos archivos.
+escribe. Ya viene en el repo que clonaron: **`<repo>/vault/`** (Projects/, Raw/, Inbox/, Wiki/
++ el `.obsidian/`). **Ese ES su vault, no hay que copiar nada.** El repo clonado (ej.
+`~/second-brain-home/`) es el `VAULT_ROOT`; los tools lo resuelven solos por su ubicación.
 
-1. Preguntá dónde quieren el vault (default `~/second-brain`).
-2. **Creá la carpeta y copiá `vault-template/` completo ahí** (con su estructura Projects/,
-   Raw/, Inbox/, Wiki/ y el `.obsidian/` que ya viene). Esa copia ES su vault.
-3. Escribí `~/.hestia/vault-root.env` con `VAULT_ROOT=<ruta elegida>`.
-4. Copiá `Projects/Sistema/config.example.md` → `config.md` (ahí van a ir los IDs y prefs).
-5. **Obsidian es OPCIONAL** — ofrecelo, no lo impongas: si quieren una GUI para navegar/editar
-   a mano, que instalen Obsidian y hagan "Open folder as vault" apuntando a esta carpeta (el
-   `.obsidian/` ya trae los plugins recomendados). Si no, no pasa nada: Claude igual lo usa.
+1. Confirmá dónde quedó el clone (ej. `~/second-brain-home`). Ese es `VAULT_ROOT`.
+2. Escribí `~/.hestia/vault-root.env` con `VAULT_ROOT=<ruta del clone>` (opcional — el default es
+   relativo al repo; solo hace falta si mueven el vault a otro lado).
+3. Copiá `vault/Projects/Sistema/config.example.md` → `config.md` (ahí van los IDs y prefs).
+4. **Sus notas privadas viven acá pero NO se commitean** — el `.gitignore` ya ignora `vault/Raw/`,
+   life-signals, resúmenes y demás data personal. El repo solo trae contenido semilla ficticio.
+5. **Obsidian es OPCIONAL** — si quieren GUI para navegar/editar a mano, "Open folder as vault"
+   apuntando a `<repo>/vault/` (el `.obsidian/` ya trae los plugins). Si no, Claude igual lo usa.
 
 ### 2. Notion (obligatorio)
 1. Pedí que conecten el **connector de Notion** en Claude (ajustes de conectores de claude.ai).

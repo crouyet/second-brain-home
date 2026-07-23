@@ -79,7 +79,7 @@ tocan el repo — viven en `~/.hestia/*.env`.
 
 ## Privacidad
 
-Este es un **repo público con cero datos personales**. El `vault-template/` trae solo
+Este es un **repo público con cero datos personales**. El `vault/` trae solo
 contenido de ejemplo ficticio. Tus datos reales (salud, finanzas, notas) quedan locales y
 git-ignored. Nunca commitees `~/.hestia/`, extractos bancarios ni exports de `Raw/`.
 

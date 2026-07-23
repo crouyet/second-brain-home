@@ -79,7 +79,7 @@ the repo — they live in `~/.hestia/*.env`.
 
 ## Privacy
 
-This is a **public repo with zero personal data**. The `vault-template/` ships only
+This is a **public repo with zero personal data**. The `vault/` ships only
 fictional seed content. Your real data (health, finances, notes) stays local and is
 git-ignored. Never commit `~/.hestia/`, bank statements, or `Raw/` exports.
 
