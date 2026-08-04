@@ -60,8 +60,11 @@ escribe. Ya viene en el repo que clonaron: **`<repo>/vault/`** (Projects/, Raw/,
    2. `notion-fetch` de ese link → lista las child-databases con su `collection://<uuid>`.
       **Matcheá por nombre**: Habits/Daily habit-tracker, Reflections, Tareas/Tasks, Proyectos.
    3. Si alguna base cuelga de una **sub-página** (no directo del padre), la fetch te muestra la
-      sub-página: hacé `notion-fetch` de esa también. Si no aparece ninguna, probá `notion-search`
-      por nombre dentro del workspace.
+      sub-página: hacé `notion-fetch` de esa también — pero **no bajes a ciegas más de 1-2 saltos**.
+      El template real anida Habits/Reflections varios niveles abajo, con páginas intermedias sin
+      título (nada que matchear por nombre ahí). Si a los 2 saltos todavía te falta alguna de las
+      4 bases, **cortá la bajada y usá `notion-search` por su nombre** ("Habits", "Reflections",
+      etc.) dentro del workspace — más directo que seguir adivinando la cadena de padres.
    4. **Fallback:** para las que NO encuentres bajo ese link (típico si reusan su Notion propio con
       bases dispersas), pedí el link suelto SOLO de esas — no de las cuatro.
    5. Antes de guardar, si reusan una base propia verificá que tenga las props requeridas

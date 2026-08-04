@@ -55,3 +55,7 @@ explains how). For each signal, where does it come from? One of:
 ## Shopping module (optional)
 - **enabled:** false
 - **details:** edit `vault/Projects/Compras/` with your shops, discount days, payment methods.
+
+## Relationships tracking (optional)
+- **enabled:** false
+- **VINCULOS_PROJECT_NAME:** `<Notion project name>`   <!-- if you keep a dedicated Notion project for nurturing relationships (e.g. "Relaciones"), name it here — /revision pulls its completed tasks into the weekly reflection. Leave empty to skip. -->
