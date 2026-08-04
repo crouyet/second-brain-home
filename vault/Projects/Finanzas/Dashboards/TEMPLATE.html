@@ -45,6 +45,19 @@ td,th{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border)}
 .alta{background:rgba(208,59,59,.12);color:var(--crit)}.media{background:var(--accent-wash);color:var(--accent-strong)}.baja{color:var(--muted)}
 .action{border-left:3px solid var(--accent);padding-left:16px}
 details{margin-top:24px;font-size:13px;color:var(--ink-2)}
+.btrack{position:relative;height:14px;background:var(--grid);border-radius:7px;margin-top:6px}
+.bfill{position:absolute;left:0;top:0;height:100%;border-radius:7px;background:var(--accent)}
+.bfill.ok{background:var(--good)}.bfill.short{background:var(--warn)}
+.btarget{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink)}
+.btarget span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--muted);white-space:nowrap}
+@media (max-width:600px){
+  body{padding:32px 16px 60px}
+  h1{font-size:24px}
+  .tiles{grid-template-columns:1fr}
+  .row .lbl{width:88px;font-size:12.5px}
+  .card{padding:16px 18px}
+  table{display:block;overflow-x:auto;white-space:nowrap}
+}
 </style>
 </head>
 <body>
@@ -62,6 +75,15 @@ details{margin-top:24px;font-size:13px;color:var(--ink-2)}
     <div class="card tile"><div class="k">Plan de deuda</div><div class="v">{{cuota N/24}}</div><div class="d">{{estado}}</div><div class="r">{{interés restante}}</div></div>
     <div class="card tile"><div class="k">{{Gasto vigilado, ej. delivery}}</div><div class="v">${{valor}}</div><div class="d down">▼ {{delta}}</div><div class="r">{{lectura}}</div></div>
     <div class="card tile"><div class="k">Gasto real total</div><div class="v">${{valor}}</div><div class="d up">▲ {{delta}}</div><div class="r">{{puntual o hábito}}</div></div>
+  </div>
+
+  <!-- 2b. PRESUPUESTO (opcional): solo si la usuaria definió una regla de reparto en Plan.md
+       (ej. 30% ahorro / 40% fijos / 30% misceláneos). Una barra por categoría, línea negra = meta. -->
+  <h2>Presupuesto {{ej. 30% ahorro / 40% fijos / 30% misceláneos}}</h2>
+  <div class="card">
+    <div class="k" style="font-size:13px;color:var(--muted)">{{Categoría, ej. Ahorro}} — ${{monto}} · {{pct real}}% · meta {{pct meta}}%</div>
+    <div class="btrack"><div class="bfill short" style="width:{{pct real}}%"></div><div class="btarget" style="left:{{pct meta}}%"><span>meta {{pct meta}}%</span></div></div>
+    <p class="lead" style="margin-top:14px">{{La lectura: si una categoría está en meta y otra no, decí cuál explica la diferencia — la deuda/impuestos suelen pesar más que el consumo discrecional.}}</p>
   </div>
 
   <!-- 3. QUÉ CAMBIÓ: barras divergentes por categoría (rojo subió / azul bajó) -->

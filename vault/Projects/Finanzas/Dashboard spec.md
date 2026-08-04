@@ -17,6 +17,7 @@ Refinada del sketch original. El objetivo no es un resumen lindo: es una herrami
 3. **Cada gráfico responde una pregunta y tiene una frase de lectura.** Si no cambia una decisión, no va.
 4. **No exponer movimientos completos** — solo agregados y los ítems de "a revisar". Los datos sensibles no salen del vault.
 5. **Comercios crípticos → tabla "a revisar", nunca adivinar.**
+6. **Responsive de verdad**: media query para mobile (una sola columna en tiles/KPIs, labels angostos, tablas con `overflow-x:auto`) — se abre desde el celu tanto como desde la compu, probarlo en ambos anchos antes de dar el cierre por terminado.
 
 ## Formas según historia disponible
 
@@ -27,6 +28,7 @@ Refinada del sketch original. El objetivo no es un resumen lindo: es una herrami
 
 1. **Header**: mes, nav índice/anterior/siguiente, frase principal del mes (la historia en 2 líneas).
 2. **Panel de control**: 4 stat tiles — revolving (meta $0), plan de deuda, delivery, gasto real total. Cada una: valor, delta vs mes anterior, lectura corta, dirección deseada como tag.
+2b. **Presupuesto (opcional)**: solo si la usuaria definió una regla de reparto en `Plan.md` (ej. 30% ahorro / 40% fijos / 30% misceláneos — el split es a elección suya, no es fijo). Una barra por categoría con el % real y una línea de meta; el texto de lectura dice qué explica la brecha (normalmente deuda/impuestos, no el consumo discrecional).
 3. **Qué cambió**: barras divergentes por categoría (rojo=subió, azul=bajó), marcando qué es puntual y qué es hábito.
 4. **Dónde se fue la plata**: barras horizontales ordenadas, mes actual + anterior de referencia (ghost), top 8 + otros.
 5. **La palanca**: progress del plan (cuota N/24, estado: activo/consultado/precancelado, interés restante).
@@ -41,4 +43,4 @@ Núcleo (tablero): revolving, plan, delivery. Diagnóstico: gasto real total, po
 
 ## Validación antes de terminar
 
-Métricas con fórmula clara · cada gráfico responde una pregunta · nada decorativo · sin movimientos completos · funciona sin internet · nav índice/anterior/siguiente · abrir en browser y mirar (sin solaparse, sin overflow horizontal) · fila nueva en index.html.
+Métricas con fórmula clara · cada gráfico responde una pregunta · nada decorativo · sin movimientos completos · funciona sin internet · nav índice/anterior/siguiente · abrir en browser y mirar en desktop Y en mobile (sin solaparse, sin overflow horizontal en ningún ancho) · fila nueva en index.html.
