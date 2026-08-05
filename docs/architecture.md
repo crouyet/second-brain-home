@@ -41,8 +41,9 @@ you don't fill a blank page:
   reflective questions (only you know those). See each cadence's scheduled task.
 
 The signature metric is **training × cycle**: how your workouts and mood move across your
-menstrual phases, so you plan *with* your body instead of against it. It needs a few weeks of
-data to become meaningful — that's the point of tracking now.
+menstrual phases, so you plan *with* your body instead of against it (cycle is one optional
+signal among several — sleep, mood, workouts — the system works the same without it). It
+needs a few weeks of data to become meaningful — that's the point of tracking now.
 
 ## Energy forecast
 

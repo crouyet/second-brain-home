@@ -5,8 +5,8 @@
 **Un sistema operativo de vida (agéntico) sobre Obsidian + Notion + Claude Code.**
 Tu celular te despierta con el día ya decidido; la noche se cierra sola; tus reflexiones
 (semanal → anual) llegan precargadas con métricas y vos solo agregás lo que una máquina no
-puede saber. Lee tu energía desde tu ciclo menstrual y tu sueño, captura tu mood desde Apple
-Health, y te habla por un bot de Telegram.
+puede saber. Lee tu energía desde tu sueño y tu ciclo, captura tu mood desde Apple Health,
+y te habla por un bot de Telegram.
 
 > La implementación de referencia está en español rioplatense (el tono cálido, cero
 > reproche, es parte del diseño). Vos customizás todo.
@@ -21,7 +21,7 @@ Health, y te habla por un bot de Telegram.
 
 | Pieza | Qué hace |
 |---|---|
-| **Tick de la mañana** | 8:30 — predice tu energía (ciclo + sueño), decide tus ≤3 tareas, te lo manda por Telegram. Cero preguntas. |
+| **Tick de la mañana** | 8:30 — predice tu energía (sueño + ciclo), decide tus ≤3 tareas, te lo manda por Telegram. Cero preguntas. |
 | **Tick de la noche** | 22:30 — cierra el día, un tap de mood, escribe tu fila del habit-tracker. |
 | **Escalera de reflexiones** | Semanal → Mensual → Trimestral → Anual, cada una **precargada** con métricas (entreno×ciclo, mood, cumplimiento). Vos revisás; no llenás una hoja en blanco. |
 | **Habit-tracker diario** | Una tabla de Notion, una fila por día. Claude auto-completa lo que tiene fuente (entrenos←Strava, mood/sueño/ciclo←Apple Health); vos llenás el resto. |
@@ -39,7 +39,8 @@ Health, y te habla por un bot de Telegram.
 - **Telegram** — un bot que creás con @BotFather.
 - **Claude Code** — el cerebro. Necesita `claude setup-token` (auth headless de larga duración).
 
-Solo configurás las fuentes que realmente querés. Todo es opcional salvo Notion + Telegram.
+Solo configurás las fuentes que realmente querés. Todo es opcional salvo Notion + Telegram —
+el ciclo incluido: es una señal más, no un requisito.
 
 ---
 

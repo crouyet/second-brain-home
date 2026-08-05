@@ -40,7 +40,7 @@ explains how). For each signal, where does it come from? One of:
 | Signal | Source | Habits column |
 |---|---|---|
 | mood | apple-health | `Mood ` (or manual) |
-| cycle | apple-health | `Ciclo` → drives energy forecast |
+| cycle *(only if this applies to you — drop the row otherwise)* | apple-health | `Ciclo` → drives energy forecast |
 | sleep | apple-health | `Sueño (h)` |
 | supplements | apple-health / manual | `Suplements` |
 | workouts | strava | `Gym` / `Yoga` / `Bicis` |
