@@ -97,10 +97,25 @@ Guardá el mapeo señal→fuente en `config.md` (tabla Habit tracker). La tabla 
 se adaptan: Claude auto-completa lo que tiene fuente, la persona llena el resto.
 
 ### 5. Apple Health (solo si eligieron alguna fuente = apple-health)
+
+**Antes de instalar nada, contales qué implica y dales la salida.** Esto abre un puerto en su
+red, así que la decisión es de ellos, no tuya:
+- Abre un puerto HTTP en la red local, **sin cifrado**: quien esté en la misma WiFi puede ver
+  los datos de salud en tránsito. La API key evita que le escriban datos falsos, no que lean.
+- Ciclo, sueño y medicación quedan **en claro en el disco** de la Mac (nunca se commitean).
+- Esos archivos los leen **rutinas autónomas** de Claude, sin nadie mirando.
+
+**Si prefieren no exponer nada:** que elijan `manual-notion` para mood/ciclo/sueño/meds en el
+paso 4 y salteen este paso entero. El sistema funciona igual, esas señales las cargan a mano.
+Detalle completo en `tools/health-receiver/SETUP.md`.
+
+Si siguen:
 1. **Aclará que Health Auto Export es una app PAGA (~US$4/año)** — guialos a comprarla e
    instalarla en el iPhone: https://apps.apple.com/app/health-auto-export/id1115567069
 2. Instalá el receiver: `tools/health-receiver/install.sh` (auto-detecta la IP de la Mac con
    `ipconfig getifaddr en0`; genera `~/.hestia/health-receiver.env` con `API_KEY` y `PORT`).
+   Agregale `ALLOW_CIDR=<subred de casa>` a ese `.env` para que rechace requests de fuera de la
+   red (la subred sale de la IP de la Mac: `192.168.1.37` → `192.168.1.0/24`).
 3. En la app, configurar **4 REST API Automations** (Cycle, Mood, Sleep, Medications):
    formato JSON, "Since Last Sync", cada 6h, endpoint `http://<ip-de-tu-Mac>:9001/` con header
    `X-API-Key: <la del .env>`. (Ver `tools/health-receiver/SETUP.md`.)
