@@ -98,12 +98,18 @@ se adaptan: Claude auto-completa lo que tiene fuente, la persona llena el resto.
 
 ### 5. Apple Health (solo si eligieron alguna fuente = apple-health)
 
-**Antes de instalar nada, contales qué implica y dales la salida.** Esto abre un puerto en su
-red, así que la decisión es de ellos, no tuya:
+**Antes de instalar nada, contales qué implica y dales la salida.** Es el único componente que
+abre un puerto en su red, así que la decisión es de ellos, no tuya:
 - Abre un puerto HTTP en la red local, **sin cifrado**: quien esté en la misma WiFi puede ver
-  los datos de salud en tránsito. La API key evita que le escriban datos falsos, no que lean.
-- Ciclo, sueño y medicación quedan **en claro en el disco** de la Mac (nunca se commitean).
+  los datos de salud en tránsito, y la API key viaja en texto plano en cada sync. La key evita
+  que les escriban datos falsos, no que lean.
+- Ciclo, sueño y medicación quedan en el disco de la Mac (nunca se commitean). Con FileVault
+  activado están cifrados en reposo; los directorios quedan en `0700`.
 - Esos archivos los leen **rutinas autónomas** de Claude, sin nadie mirando.
+
+Sin dramatizar: todo esto necesita a alguien ya metido en su red y que sepa que corren esto —
+en una casa con WiFi propia es poco probable. El cuadro completo, con qué tan probable es cada
+riesgo, está en `docs/security.es.md`; si preguntan, mandalos ahí.
 
 **Si prefieren no exponer nada:** que elijan `manual-notion` para mood/ciclo/sueño/meds en el
 paso 4 y salteen este paso entero. El sistema funciona igual, esas señales las cargan a mano.

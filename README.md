@@ -76,6 +76,9 @@ Portability lives in one file: **`vault/Projects/Sistema/config.md`** — your N
 timezone, and signal→source mapping. `/setup` fills it; you edit it. Secrets never touch
 the repo — they live in `~/.hestia/*.env`.
 
+Before you install: [`docs/security.md`](docs/security.md) lists what this system exposes,
+how likely each risk actually is, and which parts are optional.
+
 ---
 
 ## Privacy

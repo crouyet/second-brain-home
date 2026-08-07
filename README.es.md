@@ -76,6 +76,9 @@ La portabilidad vive en un solo archivo: **`vault/Projects/Sistema/config.md`** 
 Notion, timezone y mapeo señal→fuente. El `/setup` lo llena; vos lo editás. Los secretos nunca
 tocan el repo — viven en `~/.hestia/*.env`.
 
+Antes de instalar: [`docs/security.es.md`](docs/security.es.md) lista qué expone este sistema,
+qué tan probable es cada riesgo, y qué partes son opcionales.
+
 ---
 
 ## Privacidad
