@@ -70,7 +70,7 @@ Health / otro connector como Strava), y registrar las rutinas programadas.
 
 Sensores (Apple Health, Strava, Calendar) → Kernel (Claude + los docs de `Sistema/`:
 heurística de energía, señales de riesgo, contrato de autonomía) → Actuadores (Telegram,
-Notion). Recorrido completo en [`docs/architecture.md`](docs/architecture.md).
+Notion). Recorrido completo en [`docs/architecture.es.md`](docs/architecture.es.md).
 
 La portabilidad vive en un solo archivo: **`vault/Projects/Sistema/config.md`** — tus IDs de
 Notion, timezone y mapeo señal→fuente. El `/setup` lo llena; vos lo editás. Los secretos nunca
