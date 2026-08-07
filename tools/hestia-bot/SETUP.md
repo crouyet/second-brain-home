@@ -23,6 +23,10 @@ chmod 600 ~/.hestia/telegram.env
 
 El token vive SOLO en ese archivo — nunca en el vault ni en un chat.
 
+`CHAT_ID` tiene que ser el de tu chat 1-a-1 con el bot, **nunca un grupo**: el bot ignora todo lo
+que no venga de ese chat, así que ese número es el único auth que hay. En un grupo, cualquier
+miembro le hablaría a Claude con tu misma autoridad.
+
 ## 3. Arrancar (1 min)
 
 ```bash

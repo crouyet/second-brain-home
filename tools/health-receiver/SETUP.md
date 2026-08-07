@@ -9,6 +9,33 @@ Ya está corriendo en tu Mac (LaunchAgent instalado). Lo que falta es configurar
 - **URL**: `http://<YOUR-MAC-LAN-IP>:9001/`
 - **Header**: `X-API-Key` → el valor está en `~/.hestia/health-receiver.env` de tu Mac (no lo repito acá, es secreto)
 
+## Qué protege esto y qué no (leelo antes de activarlo)
+
+El receiver abre un puerto en tu red local. La API key es todo el auth que hay:
+
+- **Protege** contra que alguien de tu red te escriba datos de salud falsos (sin la key, 401).
+- **No protege** el tráfico: es HTTP plano, **sin TLS**. Quien esté en la misma WiFi y sepa mirar
+  puede leer lo que manda el iPhone. La app no maneja bien certificados self-signed, así que si tu
+  red no es de confianza el camino es un reverse proxy con TLS adelante — no cambia nada de acá.
+- Los datos quedan **en claro en el disco** de la Mac, en `vault/Raw/health/` (directorio `700`, solo
+  tu usuario). Nunca se commitean: están en `.gitignore`.
+- Esos archivos los leen **rutinas autónomas** de Claude, sin nadie mirando. Por eso el receiver
+  rechaza con `400` cualquier body que no sea JSON válido: texto libre en el vault sería una vía
+  directa para meterle instrucciones a un agente.
+
+Las dos perillas, ambas opcionales en `~/.hestia/health-receiver.env`:
+
+```
+ALLOW_CIDR=192.168.1.0/24   # solo acepta requests de tu red; el resto, 403
+BIND=0.0.0.0                # default; 127.0.0.1 solo si probás desde la misma Mac
+```
+
+Para `ALLOW_CIDR` usá la subred de tu casa: corré `ipconfig getifaddr en0` y reemplazá el último
+número por `0/24` (ej. IP `192.168.1.37` → `192.168.1.0/24`).
+
+Si nada de esto te cierra, **no hace falta usar Apple Health**: en `/setup` podés elegir
+`manual-notion` para mood, ciclo, sueño y medicación, y cargar esas señales a mano.
+
 ## Crear las automations en la app
 
 Repetí esto **3 veces** (una por cada tipo de dato — la app solo permite un tipo por automation):

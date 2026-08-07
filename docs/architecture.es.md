@@ -42,8 +42,10 @@ llenás una hoja en blanco:
   cadencia.
 
 La métrica insignia es **entreno × ciclo**: cómo se mueven tus entrenos y tu mood a lo largo de
-tus fases menstruales, para que planifiques *con* tu cuerpo en vez de contra él. Necesita unas
-semanas de datos para volverse significativa — ese es el punto de trackear desde ahora.
+tus fases menstruales, para que planifiques *con* tu cuerpo en vez de contra él (el ciclo es
+una señal opcional más — junto a sueño, mood, entrenos — el sistema funciona igual sin ella).
+Necesita unas semanas de datos para volverse significativa — ese es el punto de trackear desde
+ahora.
 
 ## Predicción de energía
 

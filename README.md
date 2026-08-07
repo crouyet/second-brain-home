@@ -5,8 +5,8 @@
 **An agentic life-operating-system on top of Obsidian + Notion + Claude Code.**
 Your phone wakes you with the day already decided; your evening closes itself; your
 reflections (weekly → yearly) come pre-loaded with metrics so you only add what a
-machine can't know. It reads your energy from your menstrual cycle and sleep, captures
-your mood from Apple Health, and talks to you through a Telegram bot.
+machine can't know. It reads your energy from your sleep and cycle, captures your mood
+from Apple Health, and talks to you through a Telegram bot.
 
 > Reference implementation is in Rioplatense Spanish (the warm, no-reproach tone is
 > part of the design). Docs and setup are in English. You customize everything.
@@ -20,7 +20,7 @@ your mood from Apple Health, and talks to you through a Telegram bot.
 
 | Piece | What it does |
 |---|---|
-| **Morning tick** | 8:30 — predicts your energy (cycle + sleep), decides your ≤3 tasks, sends it to Telegram. Zero questions. |
+| **Morning tick** | 8:30 — predicts your energy (sleep + cycle), decides your ≤3 tasks, sends it to Telegram. Zero questions. |
 | **Evening tick** | 22:30 — closes the day, one mood tap, writes your daily habit-tracker row. |
 | **Reflection ladder** | Weekly → Monthly → Quarterly → Yearly, each **pre-loaded** with metrics (training×cycle, mood, completion). You review; you don't fill a blank page. |
 | **Daily habit-tracker** | A Notion table, one row/day. Claude auto-fills what has a source (workouts←Strava, mood/sleep/cycle←Apple Health); you fill the rest. |
@@ -38,7 +38,8 @@ your mood from Apple Health, and talks to you through a Telegram bot.
 - **Telegram** — a bot you create with @BotFather.
 - **Claude Code** — the brain. Requires `claude setup-token` (long-lived headless auth).
 
-You only configure the sources you actually want. Everything is optional except Notion + Telegram.
+You only configure the sources you actually want. Everything is optional except Notion +
+Telegram — cycle tracking is just one signal among several, not a requirement.
 
 ---
 
@@ -74,6 +75,9 @@ walkthrough in [`docs/architecture.md`](docs/architecture.md).
 Portability lives in one file: **`vault/Projects/Sistema/config.md`** — your Notion IDs,
 timezone, and signal→source mapping. `/setup` fills it; you edit it. Secrets never touch
 the repo — they live in `~/.hestia/*.env`.
+
+Before you install: [`docs/security.md`](docs/security.md) lists what this system exposes,
+how likely each risk actually is, and which parts are optional.
 
 ---
 
