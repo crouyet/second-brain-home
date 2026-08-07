@@ -18,7 +18,7 @@ son reglas ajustables acá, `/revision` las retoca con evidencia del [[Trust led
 
 ## Reglas de energía baja
 
-- **Sueño**: <6h anoche → baja.
+- **Sueño**: <6h anoche → baja. El registro tiene que ser de la noche de ayer→hoy (chequeá la fecha, no tomes "el más reciente" a ciegas): el watch sincroniza cada ~5h y a las 8:30 puede no tener todavía la noche de anoche. Si el dato más nuevo es de una noche anterior, es que anoche no sincronizó aún — tratalo como **sin dato** (bajá un nivel en el orden de confianza), nunca como si ese número viejo fuera el de hoy.
 - **Fase del ciclo** (desde el último flujo menstrual registrado):
   - Día 1-5: menstrual → **baja**
   - Día 6-13: folicular → media/alta
