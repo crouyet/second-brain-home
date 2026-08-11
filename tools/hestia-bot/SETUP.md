@@ -48,7 +48,7 @@ Si la Mac durmió igual, el mensaje sale cuando despierte — deuda cero.
 | Le escribís | Hace |
 |---|---|
 | `tomé magnesio` | lo loguea en life-signals/supplements.log |
-| `compré sésamo 3200 en frutos are` | `/compras registrar` |
+| `compré sésamo 3200 en <comercio>` | `/compras registrar` |
 | `qué hago` | `/ahora` — te da UNA acción |
 | `cocinar` | `/ahora cocinar` |
 | `me caí` / `no doy más` | re-enganche mínimo, sin culpa |

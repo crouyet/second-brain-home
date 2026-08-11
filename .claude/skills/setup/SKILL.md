@@ -173,9 +173,14 @@ mande el Telegram**: si algo se colgó por permisos, faltó una entrada de `allo
 
 ### 9. Rutinas programadas
 Registrá las scheduled-tasks de `scheduled-tasks/` (mañana, noche, reflexiones semanal/
-mensual/trimestral/anual, meal-prep) en **`~/.claude/scheduled-tasks/`** — es lo único que NO
+mensual/trimestral/anual, meal-prep, cierre de finanzas) en **`~/.claude/scheduled-tasks/`**
+— es lo único que NO
 vive a nivel proyecto: el scheduler las descubre global, no desde el repo. Copialas ahí o crealas
-con el MCP scheduled-tasks. Ajustá los horarios al timezone del `config.md`. Los prompts usan
+con el MCP scheduled-tasks. **Las dos del viernes (`planificacion-menu-semanal` →
+`planificacion-compras-semanal`) solo se registran si activaron el módulo cocina y planifican
+por semana; van separadas ~2h, que es la ventana para pedir cambios al menú.** Si no planifican
+por semana, registrá solo la de compras y corrigiéndole el paso 0 (no hay menú que esperar).
+Ajustá los horarios al timezone del `config.md`. Los prompts usan
 rutas relativas al repo (`tools/…`, `.claude/skills/…`), así que corren paradas en `VAULT_ROOT`.
 
 ### 10. Módulos opcionales
@@ -183,6 +188,40 @@ rutas relativas al repo (`tools/…`, `.claude/skills/…`), así que corren par
 - **Finanzas:** si lo activan, **explicá que tienen que guardar sus resúmenes/extractos en
   `vault/Projects/Finanzas/Resumenes/` con el formato de nombre** de ese README
   (`MM-YYYY-<fuente>.<ext>`), y definir su `expected_files` en `config.md`.
+- **Chefcito (cocina):** si lo activan, **NO les impongas el modelo del repo.**
+  `Planes Semanales/_template.md` trae la estructura de quien escribió el sistema (5 tomas
+  al día, dos personas cocinando, la proteína como eje) y para la mayoría va a estar mal.
+  **Entrevistalos** — una pregunta a la vez, como el resto del setup — y adaptá el template
+  a lo que contesten. Preguntá solo esto, que es lo que el planificador necesita para
+  dimensionar:
+
+  1. **¿Cuántas veces comés por día, y cuáles cocinás vs. cuáles resolvés con lo que haya?**
+     → define las columnas de la tabla de tomas y la de demanda. Si come 3 veces, el template
+     tiene 3 columnas, no 5.
+  2. **¿Quién cocina y qué días?** → los bloques de la sección 3. Puede ser una sola persona,
+     pueden ser dos, puede no haber día fijo (ahí va una regla relativa: "el día que venga se
+     cocina X, los siguientes se come Y").
+  3. **¿Planificás la semana completa o vas día a día?** → si van día a día, **el modo
+     planificación semanal no se activa**: Chefcito queda solo en modo prep, y listo.
+  4. **¿Tenés algún objetivo nutricional cuantificado?** (lo que les haya dado un
+     profesional) → si no tienen, el chequeo de cantidad se saltea y el plan igual sale, solo
+     sin dimensionar contra un número. **No inventes uno ni sugieras valores**: no sos su
+     nutricionista.
+  5. **¿Qué tiene que haber siempre en tu cocina?** → esos son los `origen: cocinado`
+     iniciales de `productos.json`. Si no se les ocurre nada, dejá los dos de ejemplo.
+  6. **¿Hay algo que condicione qué te viene bien comer?** (entrenamiento, alergias,
+     intolerancias, ciclo) → **opcional y solo si lo traen ellos**. No lo repreguntes si ya
+     salió en el paso de señales.
+
+  **Dos salidas, no una**: escribí las respuestas en la sección `## Chefcito` de `config.md`
+  **y reescribí `vault/Projects/Chefcito/Planes Semanales/_template.md`** con su estructura
+  real — columnas de la tabla, nombres de los bloques, quién cocina. El template del repo es
+  el punto de partida, no el resultado: **si después del setup quedó igual, la entrevista no
+  sirvió.** Lo único que no se toca es la mecánica (declarar demanda antes de elegir,
+  declarar porciones, y que producción ≥ demanda): eso es lo que evita que el plan se quede
+  corto, y aplica sea cual sea la estructura.
+
+  Si no quieren contestar, dejá el default y seguí — esto no bloquea nada.
 
 ### 11. Smoke test
 - `tools/hestia-bot/send.sh "hola desde second-brain-home"` → debe llegar a su Telegram.

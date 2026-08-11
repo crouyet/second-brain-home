@@ -56,6 +56,38 @@ explains how). For each signal, where does it come from? One of:
 - **enabled:** false
 - **details:** edit `vault/Projects/Compras/` with your shops, discount days, payment methods.
 
+## Chefcito — kitchen module (optional)
+`/setup` fills this in by **asking how YOU plan meals** — it does not assume the author's
+structure, and it rewrites `Chefcito/Planes Semanales/_template.md` to match your answers.
+
+- **enabled:** false
+- **plans_weekly:** true   <!-- false = you decide day by day; the weekly planning mode stays off -->
+- **meals_per_day:** 3     <!-- how many times you eat. Drives the demand table and the day columns -->
+- **cooked_vs_stocked:** `lunch, dinner = cooked` · `breakfast = stocked`
+  <!-- "cooked" comes out of a prep block; "stocked" just has to be there. Both get counted:
+       "not planned" is not the same as "not counted" — an empty slot means no food -->
+- **who_cooks:** `you, Sundays`
+  <!-- one person or several, with days. If the day isn't fixed, say so — the plan uses a
+       relative rule instead of inventing a day -->
+- **nutrition_target:** ``
+  <!-- optional, and only if a professional gave you one (e.g. "100g protein/day"). Empty =
+       the plan still works, it just skips the quantity check. The system never invents one -->
+- **always_in_the_kitchen:** `something healthy to snack on, cut vegetables`
+  <!-- your floor of ready food. These become `origen: cocinado` products in productos.json:
+       restocked by cooking, never by shopping -->
+- **conditioning_signals:** ``
+  <!-- optional: training, allergies, intolerances, cycle — only what you choose to share -->
+- **MENU_COLLECTION_ID:** `<uuid>`
+  <!-- optional: a Notion DB with one row per day for the week's menu. Leave empty and the
+       weekly plan lives only in Chefcito/Planes Semanales/ — which is enough -->
+- **menu_review_window_hours:** 2
+  <!-- how long the proposal waits for your changes before the shopping list goes out.
+       Silence never blocks the list: it publishes and says it did -->
+
+> The **mechanics** don't change with your answers and shouldn't be edited out: declare the
+> week's demand before picking recipes, declare how many portions each block yields, and
+> check production ≥ demand. That's what keeps a plan from silently falling short.
+
 ## Relationships tracking (optional)
 - **enabled:** false
 - **VINCULOS_PROJECT_NAME:** `<Notion project name>`   <!-- if you keep a dedicated Notion project for nurturing relationships (e.g. "Relaciones"), name it here — /revision pulls its completed tasks into the weekly reflection. Leave empty to skip. -->

@@ -2,7 +2,7 @@
 categories: [project-brief, index]
 subjects: [sistema, automatizacion, rutina]
 status: active
-nivel: v1.4
+nivel: v1.5
 ---
 
 # Sistema — el sistema operativo de vida
@@ -34,8 +34,8 @@ Modelo completo en [[Agentic OS PRD]]: **sensores** (capturan sin esfuerzo) → 
 | **hestia-bot** | cuando le escribís | menú "/" con todas las piezas: `/ahora`, `/hoy` (vistazo), `/planificar` (tareas por Telegram → Notion), `/compras`, `/chefcito`, `/revision`, `/finanzas` (3 números). Texto libre: "compré…", "tarea: …", "qué hago", re-enganche — Telegram, `tools/hestia-bot/` |
 | **`/ahora`** | "qué hago" (bot o acá) | UNA acción física de ≤5 min — Hestia piensa el next, vos ejecutás. Modo cocina incluido |
 | `/planificar` | lunes (invitado por el tick) o cuando haga falta | brain-dump (chat o Telegram) → tareas estimadas con Due en Notion |
-| `/compras` | viernes 18h, solo | lista del sábado armada, veredicto de la-contadora, enviada por Telegram + modo registrar |
-| `/chefcito` | domingo | mini-prep de secundarias por nivel de energía y fase del ciclo |
+| `/compras` | viernes 18h, solo | plan de compras de la semana por día y canal, veredicto de la-contadora, enviado por Telegram + modo registrar |
+| `/chefcito` | viernes (menú) y domingo (prep) | planifica la semana dimensionada contra tu estructura de comidas (demanda vs. porciones) y ejecuta el bloque de prep, incluido el piso de comida lista |
 | `/revision` | **viernes 17h**, solo | cierre de semana con intención: weekly reflection guiada (→ página en Reflections + Mood average de Apple Health), predicho vs. reportado, ledger, racha sin scroll, 1 mejora |
 | `monthly-reflection` | día 1, solo | métricas del mes automáticas (mood×ciclo×sueño×entrenos, contextual) + planificación guiada → página Monthly en Reflections |
 | `/cierre-finanzas` | día 5, solo | análisis mensual + tracker 3 números ([[../Finanzas/Plan|Plan]]) |
@@ -45,12 +45,12 @@ Las 5 tareas programadas corren en la Mac (app de Claude abierta); si estaba dor
 ## Ritmo semanal
 
 - **Todos los días**: 8:30 mensaje de la mañana + Daily armado en Notion (solo, con datos de salud en vivo) · pomodoros con micro-tarea de casa en el descanso de 5'.
-- **Lunes**: el tick invita a **planificar la semana** (brain-dump por Telegram → `/planificar`) · Farmacity 10% si hace falta (ver `/compras`).
-- **Martes**: micro-prep de guisos — bajar carne del freezer + chequear verduras (2', lo recuerda `/ahora`).
-- **Miércoles**: día de la chica — guisos, lavado semanal de ropa, limpieza profunda (lista fija en [[../Casa/README|Casa]]).
-- **Viernes 17h**: `/revision` — cierre de semana con intención (weekly reflection → Notion). **18h**: la lista del sábado llega sola por Telegram.
-- **Sábado**: feria (Buepp 30%) + resto de compras · registrar la compra (`/compras` modo registrar). El finde es para procesar, no para planificar.
-- **Domingo**: `/chefcito` mini-prep + pedir viandas de la semana.
+- **Lunes**: el tick invita a **planificar la semana** (brain-dump por Telegram → `/planificar`).
+- **Martes**: micro-prep — bajar del freezer lo del día de cocina + chequear verduras (2', lo recuerda `/ahora`).
+- **Miércoles**: día de quien ayuda en casa — cocina, lavado semanal, limpieza profunda (lista fija en [[../Casa/README|Casa]]).
+- **Viernes 17h**: `/revision` — cierre de semana con intención (weekly reflection → Notion). **18h**: el plan de compras de la semana llega solo por Telegram.
+- **Sábado**: compras presenciales (el día de descuento del canal principal) · registrar la compra (`/compras` modo registrar). El finde es para procesar, no para planificar.
+- **Domingo**: `/chefcito` — bloque de prep de la semana.
 - **Día 1 del mes**: `monthly-reflection` (métricas + plan del mes). **Día 5**: `/cierre-finanzas`.
 
 ## Reglas del sistema
@@ -67,7 +67,7 @@ Las 5 tareas programadas corren en la Mac (app de Claude abierta); si estaba dor
 
 ## Gamificación
 
-- El sistema tiene **nivel** (frontmatter `nivel:` de esta nota): sube 0.1 con cada mejora semanal. Hoy: **v1.0**.
+- El sistema tiene **nivel** (frontmatter `nivel:` de esta nota): sube 0.1 con cada mejora semanal.
 - `/revision` cierra con **wins de la semana** (lo cumplido, lo que se movió, la racha de pulsos atendidos) — progreso visible, presión invisible.
 - Mood del Journal + Strava + cumplimiento = el tablero real de cómo viene la vida, no solo las tareas.
 
@@ -77,16 +77,46 @@ Va a pasar. El protocolo es uno solo: abrir Claude, decir "me caí del sistema",
 
 ## Changelog
 
+- **2026-08-11 · v1.5 — La cocina deja de planificar contra estado supuesto** — la causa
+  raíz de casi todos los errores del módulo cocina era que el sistema "recordaba" que
+  había algo cuando lo único que sabía es que **hubo**. Nuevo
+  [[Modelo de estado de la cocina]] con el principio que ordena todo: **nunca inferir
+  "disponible", solo se infiere hacia abajo.** `productos.json` pasa de un campo de stock
+  en texto libre a una **máquina de estados** (`estado` + `estado_desde`, transiciones con
+  dueño único) más tres dimensiones que resuelven problemas distintos: **`dudoso`** se
+  calcula y no se guarda (es el disparador de la pregunta semanal); **`rol`**
+  (`constante`/`rotacion`/`esporadico`) define a qué velocidad envejece el dato y si un
+  `agotado` entra a la lista — un `esporadico` no se compra porque falte, sino si una
+  receta lo pide; **`origen`** (`comprado`/`cocinado`) hace que un preparado recurrente sea
+  un producto que se repone **cocinando**, así "que siempre haya algo sano para picar" deja
+  de ser una intención y pasa a ser un estado con vencimiento. La planificación usa
+  **commit/rollback**: el plan declara qué consume y no aplica nada hasta que la tarea
+  llega a Done. Y el plan semanal se **dimensiona**: declara cuántas tomas necesita la
+  semana y cuántas porciones producen los bloques, con la regla de que **producción ≥
+  demanda** antes de darlo por bueno — un plan que cubre una sola comida al día se queda
+  corto sin que nadie se dé cuenta. Dos scripts nuevos con self-check `--demo`:
+  `regenerar-productos-md.py` (genera la vista, deriva `dudoso`, y **proyecta** lo mínimo
+  que cada agente necesita en vez de que lea el catálogo entero) y `cobertura.py` (lee solo
+  el frontmatter `funcion:` para decir qué cubre el menú y qué le falta). **`/setup` ahora
+  entrevista** a quien active el módulo cocina sobre **su** forma de armar el menú y
+  reescribe el template con esa estructura: el modelo que trae el repo es un ejemplo, no
+  una doctrina. El viernes se parte en dos tareas
+  (`planificacion-menu-semanal` → `planificacion-compras-semanal`, que reemplazan a
+  `compras-viernes`): la lista sale del menú, así que primero se decide qué se come y se
+  abre una **ventana de cambios** — pero **el silencio no frena la lista**, se publica y se
+  aclara. Nuevo [[../Compras/Patrones]] con el método para minar tus resúmenes bancarios y,
+  sobre todo, con el **punto ciego**: lo que pagás en efectivo o por transferencia no
+  aparece en ninguna tarjeta, así que ahí tu registro es la única fuente de verdad.
 - **2026-07-17 · v1.4.2 — Ejecución sin esperar a la usuaria** — el techo no se mueve
   (Hestia nunca paga), pero todo lo previo al botón ahora es del sistema:
   **carrito armado** (interactivo: carrito real en el browser; programado: link
   directo por producto, y los links se guardan en productos.json — nunca se
   busca dos veces), **vigía de precios** (cada relevamiento del viernes persiste
   `precio_referencia`+`precio_verificado`; suba ≥25% → alerta en el plan),
-  **drafts de pedidos** Coeco/Yogurade redactados listos para reenviar cuando el
-  ciclo vence, y **cierre financiero automático**: el tick 8:30 detecta el set
-  completo del mes en Resumenes/ (visa+master+cuentas+MP por convención de
-  nombres) y corre /cierre-finanzas solo — avisa solo si hay anomalía; set
+  **drafts de pedidos** (los comercios que se piden por mensaje salen redactados
+  y listos para reenviar cuando el ciclo vence), y **cierre financiero
+  automático**: el tick 8:30 detecta el set completo del mes en Resumenes/
+  (según los `expected_files` de config) y corre /cierre-finanzas solo — avisa solo si hay anomalía; set
   incompleto >1 día → recordatorio de qué falta; "cerrá con lo que hay" por
   Telegram → ruta nueva del bot. También: bot.py ya no bloquea (thread por
   mensaje + acuse de recibo "⏳" inmediato — antes un /ahora lento lo dejaba
@@ -96,17 +126,17 @@ Va a pasar. El protocolo es uno solo: abrir Claude, decir "me caí del sistema",
   (hoy, aunque pierda descuento) o si hoy es el día de descuento del canal con
   ≥2 ítems (consolidación); sin sesión iniciada en el comercio → links directos.
 - **2026-07-16 · v1.4.1 — Compras autónomas** — descuentos reverificados online
-  (Carrefour: el 10% murió, ahora 25% BBVA+MODO sáb/dom tope $20k ⚠️ confirmar
-  nómina; "Farmacity lunes 10%" eliminado — era de Macro; Frutos Are **martes
-  30% BBVA** confirmado; Feria Buepp ⚠️ renovación sin publicar). Nuevo
-  [[../Compras/Patrones|Patrones]]: patrones reales minados de los resúmenes
-  (súper genérico cada ~10 días ~$27k; carne del guiso = Carnicería Leo sábado;
-  **punto ciego**: feria/Mellino/Coeco/Yogurade/Frutos Are/Tienda Nova no
-  aparecen en ninguna tarjeta → el modo registrar por Telegram es la única
-  fuente de verdad ahí). Motor de compras con **mapa de días** (urgente → hoy
-  por el canal rápido; reponer → al día de descuento del canal; ir pensando →
-  se acumula), **regla de staleness** (estado >45 días sin registro = dudoso →
-  sección "¿Sigue faltando?" del viernes, no infla urgentes) y salida como
+  contra el sitio de cada banco/billetera (uno había muerto, otro estaba mal
+  atribuido, otro sin renovación publicada → quedan marcados ⚠️ y se usan
+  condicionales). Nuevo [[../Compras/Patrones|Patrones]]: patrones reales
+  minados de los resúmenes bancarios (frecuencia y gasto típico por comercio) y
+  un **punto ciego** que conviene conocer: los comercios que se pagan en
+  efectivo o por transferencia **no aparecen en ninguna tarjeta** → ahí el modo
+  registrar por Telegram es la única fuente de verdad. Motor de compras con
+  **mapa de días** (urgente → hoy por el canal rápido; reponer → al día de
+  descuento del canal; ir pensando → se acumula), **regla de staleness**
+  (estado sin registro reciente = dudoso → sección "¿Sigue faltando?" del
+  viernes, no infla urgentes) y salida como
   **plan de semana** por día/canal. `compras-viernes` emite el plan; el tick
   8:30 avisa si HOY es el día del canal de algo urgente confirmado. Verificado
   la-veterana: PASS.
