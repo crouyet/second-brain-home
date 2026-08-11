@@ -1,12 +1,146 @@
 {
-  "_comment": "EJEMPLO. Tu inventario de compras. Editá con tus productos.",
+  "_comment": "EJEMPLO. Tu inventario. Cada producto muestra un caso del modelo — ver vault/Projects/Sistema/Modelo de estado de la cocina.md. Editá con lo tuyo.",
+  "_campos": {
+    "estado": "desconocido | disponible | bajo | agotado | pedido | pausado — el estado, y nada más",
+    "estado_desde": "fecha ISO de la última confirmación. Sin esto no se puede calcular si el dato envejeció",
+    "rol": "constante (siempre está) | rotacion (se consume en el ciclo) | esporadico (solo si una receta lo pide)",
+    "origen": "comprado (default) | cocinado (se repone cocinando: /compras lo ignora)",
+    "tolerancia_dias": "cuántos días vale el dato antes de volverse dudoso. Solo aplica a rol rotacion",
+    "urgencia": "alta = va hoy por el canal más rápido aunque se pierda el descuento"
+  },
   "productos": [
-    {"nombre": "café", "frecuencia_dias": 20, "stock_actual": "medio", "canal": "supermercado", "ultimo_precio": 0},
-    {"nombre": "yerba", "frecuencia_dias": 14, "stock_actual": "bajo", "canal": "feria", "ultimo_precio": 0},
-    {"nombre": "verduras", "frecuencia_dias": 7, "stock_actual": "ok", "canal": "feria", "ultimo_precio": 0}
+    {
+      "id": "sal",
+      "nombre": "Sal",
+      "lugar": "supermercado",
+      "categoria": "condimento",
+      "frecuencia": "trimestral",
+      "tolerancia_dias": 30,
+      "umbral_calidad": "bajo",
+      "estado": "disponible",
+      "estado_desde": "2026-01-15",
+      "rol": "constante",
+      "origen": "comprado",
+      "notas": "constante: que tengas sal no caduca a los 30 días, cambia por un evento"
+    },
+    {
+      "id": "verduras_hoja",
+      "nombre": "Verdura de hoja",
+      "cantidad_habitual": "1 atado",
+      "lugar": "feria",
+      "categoria": "verdura",
+      "frecuencia": "semanal",
+      "tolerancia_dias": 5,
+      "umbral_calidad": "medio",
+      "estado": "agotado",
+      "estado_desde": "2026-01-20",
+      "rol": "rotacion",
+      "origen": "comprado",
+      "notas": "rotacion: perecedero real, el dato se vence rápido"
+    },
+    {
+      "id": "papa",
+      "nombre": "Papa o boniato",
+      "cantidad_habitual": "1kg",
+      "lugar": "feria",
+      "categoria": "verdura",
+      "frecuencia": "semanal",
+      "tolerancia_dias": 21,
+      "umbral_calidad": "bajo",
+      "estado": "disponible",
+      "estado_desde": "2026-01-18",
+      "rol": "rotacion",
+      "origen": "comprado",
+      "notas": "cada cuánto lo comprás y cuánto dura el dato son cosas distintas: se compra semanal, pero dura 3 semanas"
+    },
+    {
+      "id": "salsa_picante",
+      "nombre": "Salsa picante",
+      "lugar": "supermercado",
+      "categoria": "condimento",
+      "frecuencia": "trimestral",
+      "tolerancia_dias": 30,
+      "umbral_calidad": "medio",
+      "estado": "agotado",
+      "estado_desde": "2026-01-10",
+      "rol": "esporadico",
+      "origen": "comprado",
+      "notas": "esporadico: agotado NO va a la lista solo. Entra si una receta de la semana lo pide"
+    },
+    {
+      "id": "proteina_semanal",
+      "nombre": "Proteína de la semana",
+      "lugar": "carniceria",
+      "categoria": "proteína",
+      "frecuencia": "semanal",
+      "tolerancia_dias": 7,
+      "umbral_calidad": "alto",
+      "estado": "pedido",
+      "estado_desde": "2026-01-19",
+      "rol": "rotacion",
+      "origen": "comprado",
+      "urgencia": "alta",
+      "notas": "pedido = ya está encargado, no reordenar. Si la fecha se pasa de tolerancia es un PEDIDO FANTASMA: va a la pregunta, nunca se ignora en silencio"
+    },
+    {
+      "id": "especia_cara",
+      "nombre": "Especia de calidad",
+      "lugar": "tienda especializada",
+      "categoria": "condimento",
+      "frecuencia": "trimestral",
+      "tolerancia_dias": 60,
+      "umbral_calidad": "alto",
+      "estado": "desconocido",
+      "rol": "esporadico",
+      "origen": "comprado",
+      "notas": "desconocido = nunca se registró. NO es lo mismo que agotado: asumir que falta hace recomprar lo que ya tenés"
+    },
+    {
+      "id": "producto_pausado",
+      "nombre": "Algo que dejaste de comprar",
+      "lugar": "supermercado",
+      "categoria": "despensa",
+      "frecuencia": "mensual",
+      "tolerancia_dias": 30,
+      "umbral_calidad": "bajo",
+      "estado": "pausado",
+      "estado_desde": "2026-01-05",
+      "rol": "rotacion",
+      "origen": "comprado",
+      "notas": "pausado = decisión explícita de no reponer. Se ignora sin desaparecer del catálogo"
+    },
+    {
+      "id": "prep_algo_para_picar",
+      "nombre": "Algo sano para picar",
+      "lugar": "Cocina",
+      "categoria": "preparado",
+      "frecuencia": "semanal",
+      "tolerancia_dias": 7,
+      "umbral_calidad": "alto",
+      "estado": "agotado",
+      "estado_desde": "2026-01-20",
+      "rol": "constante",
+      "origen": "cocinado",
+      "notas": "origen cocinado: NO va a la lista de compras nunca. Cuando se vence, sale como paso del bloque de prep. Es lo que evita terminar comiendo lo primero que aparece"
+    },
+    {
+      "id": "prep_base_verduras",
+      "nombre": "Verduras cortadas listas",
+      "lugar": "Cocina",
+      "categoria": "preparado",
+      "frecuencia": "semanal",
+      "tolerancia_dias": 5,
+      "umbral_calidad": "alto",
+      "estado": "desconocido",
+      "rol": "constante",
+      "origen": "cocinado",
+      "notas": "la base para dejar la cena a 1 paso de armar el plato"
+    }
   ],
   "canales": {
-    "feria": {"dia_descuento": "sabado", "descuento": "30%", "medio_pago": "BUEPP"},
-    "supermercado": {"dia_descuento": "miercoles", "descuento": "ejemplo 20%", "medio_pago": "<tu tarjeta>"}
+    "feria": {"dia_descuento": "sabado", "descuento": "30%", "medio_pago": "<tu billetera>"},
+    "supermercado": {"dia_descuento": "miercoles", "descuento": "ejemplo 20%", "medio_pago": "<tu tarjeta>"},
+    "carniceria": {"dia_descuento": null, "descuento": null, "medio_pago": "<tu tarjeta>"},
+    "tienda especializada": {"dia_descuento": null, "descuento": null, "medio_pago": "<tu tarjeta>"}
   }
 }
