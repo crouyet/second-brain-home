@@ -28,7 +28,7 @@ El que tenés + un agregado: **el descanso trae una micro-tarea, no descanso vac
 
 ## 3. Registrar compra 🎤
 
-1. "Dictar texto" (decís: "compré sésamo en Frutos Are 3200, kombucha Tienda Nova...").
+1. "Dictar texto" (decís: "compré sésamo en <comercio> 3200, kombucha en <otro>...").
 2. "Agregar a nota" → nota "Compras por registrar" en Notas de Apple.
 3. En la próxima sesión de `/compras`, Claude vacía esa nota al vault (`ultima_compra`, precios, stock). Cero fricción en el momento, cero dato perdido.
 

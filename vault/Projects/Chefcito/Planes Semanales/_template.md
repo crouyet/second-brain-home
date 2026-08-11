@@ -46,14 +46,14 @@ al día y no suma es cómo se queda corto sin que nadie se dé cuenta.
 
 | Toma | Tipo | Días que aplica | Total semana |
 |---|---|---|---|
-| {{tu toma 1}} | **preparación** / **stock** | {{}} | {{N}} |
-| {{tu toma 2}} | | | {{N}} |
-| {{tu toma 3}} | | | {{N}} |
+| {{tu toma 1}} | **preparación** / **stock** | {{}} | {{n}} |
+| {{tu toma 2}} | | | {{n}} |
+| {{tu toma 3}} | | | {{n}} |
 
 - **Preparación** = hay que cocinarlo, sale de los bloques de la sección 3.
 - **Stock** = no se cocina, se garantiza que esté (ver `../Plan-nutricional`).
 
-**Totales**: {{X}} tomas de preparación · {{Y}} de stock.
+**Totales**: {{x}} tomas de preparación · {{y}} de stock.
 **Objetivo nutricional** (si lo definiste en `config.md`): {{objetivo × días = total semana}}.
 Si no tenés uno, saltá esta línea — el plan sale igual, solo sin dimensionar contra un número.
 
@@ -73,15 +73,15 @@ qué cubre, qué no llega al piso, y a qué función apunta la receta nueva}}
 **Cada paso declara cuántas porciones rinde.** Sin ese número no se puede saber si la
 semana alcanza, que es exactamente por qué se queda corta.
 
-**{{Bloque 1 — quién, qué día}}** (~{{X}} min). Pasos chicos, en orden operativo:
-1. {{acción física concreta}} → {{dónde queda}} — **{{N}} porciones**
-2. {{"mientras tanto" — aprovechar los tiempos muertos}} — **{{N}} porciones**
+**{{Bloque 1 — quién, qué día}}** (~{{x}} min). Pasos chicos, en orden operativo:
+1. {{acción física concreta}} → {{dónde queda}} — **{{n}} porciones**
+2. {{"mientras tanto" — aprovechar los tiempos muertos}} — **{{n}} porciones**
 
 **{{Bloque 2, si hay alguien más cocinando}}**: lo que lleva horno y tiempo va acá.
 
 **Micro-prep la víspera** (2 min): bajar del freezer lo del día siguiente.
 
-**Producción total**: {{suma de porciones}} contra {{X}} tomas de preparación de 1b.
+**Producción total**: {{suma de porciones}} contra {{x}} tomas de preparación de 1b.
 Si no llega, **escalar una receta o sumar un bloque acá** — no dar el plan por bueno corto.
 
 ## 4. Las tomas, día por día

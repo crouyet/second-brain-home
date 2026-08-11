@@ -34,6 +34,8 @@ def find_hits(text):
     if re.search(pattern, text):
         hits.append(why)
     for term in load_extra_terms():
-        if term in text:
+        # Palabra completa, no substring: un nombre corto de pila aparecería
+        # dentro de otra palabra, y un guard que grita en falso se termina ignorando.
+        if re.search(rf"(?<!\w){re.escape(term)}(?!\w)", text, re.IGNORECASE):
             hits.append(f"término personal en denylist: '{term}'")
     return hits

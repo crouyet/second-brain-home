@@ -79,7 +79,7 @@ def proyeccion(productos, hoy, para):
     """Lo mínimo que cada agente necesita para decidir. ~250 tok contra ~10.300 del json.
 
     El agente NO lee productos.json ni Productos.md: lee esto. El json es el store, y el .md
-    es la vista para Cami en Obsidian.
+    es la vista para la usuaria en Obsidian.
     """
     def marca(p):
         return " ⚠️" if p.get("urgencia") == "alta" else ""
@@ -132,7 +132,7 @@ def demo():
         {"nombre": "Sal", "lugar": "Feria", "estado": "disponible", "rol": "constante", **viejo},
         {"nombre": "Azafrán", "lugar": "Feria", "estado": "disponible", "rol": "esporadico", **viejo},
         {"nombre": "Sin fecha", "lugar": "Feria", "estado": "disponible", "rol": "constante"},
-        {"nombre": "Fantasma", "lugar": "Coeco", "estado": "pedido", "urgencia": "alta",
+        {"nombre": "Fantasma", "lugar": "Pedidos", "estado": "pedido", "urgencia": "alta",
          "rol": "rotacion", "estado_desde": "2026-06-01", "tolerancia_dias": 5},
     ], hoy)
     assert "| 🟢 | Fresco | 🔄" in md, "fresco no debe salir dudoso"
@@ -142,7 +142,7 @@ def demo():
     assert "| 🟢**?** | Sin fecha | 🔁" in md, "nunca registrado = dudoso incluso si es constante"
     # pedido + dudoso = pedido fantasma; ⚠️ es urgencia alta, señal aparte
     assert "| 📦**?** ⚠️ | Fantasma | 🔄" in md, "pedido vencido dudoso + urgente"
-    assert md.count("## Feria") == 1 and "## Coeco" in md, "una sección por lugar"
+    assert md.count("## Feria") == 1 and "## Pedidos" in md, "una sección por lugar"
 
     prods = [
         {"id": "a", "nombre": "Pepino", "lugar": "Feria", "estado": "agotado",
