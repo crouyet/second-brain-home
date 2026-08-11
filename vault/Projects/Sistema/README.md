@@ -100,7 +100,13 @@ Va a pasar. El protocolo es uno solo: abrir Claude, decir "me caí del sistema",
   el frontmatter `funcion:` para decir qué cubre el menú y qué le falta). **`/setup` ahora
   entrevista** a quien active el módulo cocina sobre **su** forma de armar el menú y
   reescribe el template con esa estructura: el modelo que trae el repo es un ejemplo, no
-  una doctrina.
+  una doctrina. El viernes se parte en dos tareas
+  (`planificacion-menu-semanal` → `planificacion-compras-semanal`, que reemplazan a
+  `compras-viernes`): la lista sale del menú, así que primero se decide qué se come y se
+  abre una **ventana de cambios** — pero **el silencio no frena la lista**, se publica y se
+  aclara. Nuevo [[../Compras/Patrones]] con el método para minar tus resúmenes bancarios y,
+  sobre todo, con el **punto ciego**: lo que pagás en efectivo o por transferencia no
+  aparece en ninguna tarjeta, así que ahí tu registro es la única fuente de verdad.
 - **2026-07-17 · v1.4.2 — Ejecución sin esperar a la usuaria** — el techo no se mueve
   (Hestia nunca paga), pero todo lo previo al botón ahora es del sistema:
   **carrito armado** (interactivo: carrito real en el browser; programado: link

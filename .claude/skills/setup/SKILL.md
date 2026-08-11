@@ -173,9 +173,14 @@ mande el Telegram**: si algo se colgó por permisos, faltó una entrada de `allo
 
 ### 9. Rutinas programadas
 Registrá las scheduled-tasks de `scheduled-tasks/` (mañana, noche, reflexiones semanal/
-mensual/trimestral/anual, meal-prep) en **`~/.claude/scheduled-tasks/`** — es lo único que NO
+mensual/trimestral/anual, meal-prep, cierre de finanzas) en **`~/.claude/scheduled-tasks/`**
+— es lo único que NO
 vive a nivel proyecto: el scheduler las descubre global, no desde el repo. Copialas ahí o crealas
-con el MCP scheduled-tasks. Ajustá los horarios al timezone del `config.md`. Los prompts usan
+con el MCP scheduled-tasks. **Las dos del viernes (`planificacion-menu-semanal` →
+`planificacion-compras-semanal`) solo se registran si activaron el módulo cocina y planifican
+por semana; van separadas ~2h, que es la ventana para pedir cambios al menú.** Si no planifican
+por semana, registrá solo la de compras y corrigiéndole el paso 0 (no hay menú que esperar).
+Ajustá los horarios al timezone del `config.md`. Los prompts usan
 rutas relativas al repo (`tools/…`, `.claude/skills/…`), así que corren paradas en `VAULT_ROOT`.
 
 ### 10. Módulos opcionales

@@ -77,6 +77,12 @@ structure, and it rewrites `Chefcito/Planes Semanales/_template.md` to match you
        restocked by cooking, never by shopping -->
 - **conditioning_signals:** ``
   <!-- optional: training, allergies, intolerances, cycle — only what you choose to share -->
+- **MENU_COLLECTION_ID:** `<uuid>`
+  <!-- optional: a Notion DB with one row per day for the week's menu. Leave empty and the
+       weekly plan lives only in Chefcito/Planes Semanales/ — which is enough -->
+- **menu_review_window_hours:** 2
+  <!-- how long the proposal waits for your changes before the shopping list goes out.
+       Silence never blocks the list: it publishes and says it did -->
 
 > The **mechanics** don't change with your answers and shouldn't be edited out: declare the
 > week's demand before picking recipes, declare how many portions each block yields, and
